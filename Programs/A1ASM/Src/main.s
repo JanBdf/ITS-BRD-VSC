@@ -1,9 +1,9 @@
 ;******************** (C) COPYRIGHT HAW-Hamburg ********************************
 ;* File Name          : main.s
-;* Author             : Martin Becke
+;* Author             : Jan Bittendorf
 ;* Version            : V1.0
-;* Date               : 01.06.2021
-;* Description        : This is a simple main to setup three LEDs
+;* Date               : 16.04.2026
+;* Description        : This is a simple main to setup two LEDs
 ;                     :
 ;                     :
 ;
@@ -29,21 +29,9 @@ main
     BL initITSboard             ; needed by the board to setup
     LDR     R6, =GPIO_D_SET     ; get address of the GPIO data set register
     LDR     R7, =GPIO_D_CLR     ; get address of the GPIO data clear register
-	;STRB    #0xFF, [R6]         ; switch on all LEDs
-    MOV     R0, #0x01           ; load mask 0b0001
-    MOV     R1, #0x02           ; load mask 0b0010
-    MOV     R2, #0x40           ; load mask 0b0100 0000
-    MOV     R3, #0x80           ; load mask 0b1000 0000
 
-    ; Set LED
-    STRB    R2, [R6]    ; switch on LED D14
-    STRB    R3, [R6]    ; switch on LED D15
-    STRB    R0, [R6]    ; switch on LED D08
-    STRB    R0, [R7]    ; switch off LED D08
-    STRB    R0, [R6]    ; switch on LED D08
-    STRB    R1, [R6]    ; switch on LED D09
-    STRB    R2, [R7]    ; switch off LED D14
-    STRB    R3, [R7]    ; switch off LED D15
+	MOV      R3, #0x03          ; load mask 0b0011
+	STRB     R3, [R6]           ; turn on LED D8 and D9
     b .
     
     ALIGN
