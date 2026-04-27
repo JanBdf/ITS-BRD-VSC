@@ -1,6 +1,6 @@
 CompileFlags:
   CompilationDatabase: >-
-    /Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/out/A1ASM/ITSboard_Assembly/Debug
+    /Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/out/A1ASM/ITSboard_Assembly/Debug
   Add:
     - "-D_ILP32=1\r\n"
     - "-D_USE_STATIC_INLINE=1\r\n"
@@ -412,25 +412,26 @@ CompileFlags:
     - "-D__thumb2__=1\r\n"
     - "-D__thumb__=1\r\n"
     - '-D__ARMCOMPILER_LIBCXX=1'
-    - '-I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/Inc'
+    - '-I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/Inc'
     - >-
-      -I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+      -I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     - >-
-      -I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Drivers/CMSIS/Include
+      -I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Drivers/CMSIS/Include
     - >-
-      -I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc
+      -I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Drivers/STM32F4xx_HAL_Driver/Inc
     - >-
-      -I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Drivers/BSP/STM32F4xx_Nucleo_144
+      -I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Drivers/BSP/STM32F4xx_Nucleo_144
     - >-
-      -I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Utilities/Fonts
-    - '-I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/../../DisplayWaveshare/Inc'
+      -I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/../../stm32cubef4/Utilities/Fonts
     - >-
-      -I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/../../ITS_BRD_LIB/Utilities/AddFonts
+      -I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/../../DisplayWaveshare/Inc
     - >-
-      -I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/tmp/A1ASM.Debug+ITSboard_Assembly
+      -I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/../../ITS_BRD_LIB/Utilities/AddFonts
     - >-
-      -I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/RTE/_Debug_ITSboard_Assembly
+      -I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/tmp/A1ASM.Debug+ITSboard_Assembly
+    - >-
+      -I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/RTE/_Debug_ITSboard_Assembly
     - '-I/Users/jan/.cache/arm/packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include'
     - >-
       -I/Users/jan/.cache/arm/packs/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-    - '-I/Users/jan/Desktop/ITS-BRD-VSC/Programs/A1ASM/../../ITS_BRD_LIB/Inc'
+    - '-I/Users/jan/Desktop/ITS/ITS-BRD-VSC/Programs/A1ASM/../../ITS_BRD_LIB/Inc'
