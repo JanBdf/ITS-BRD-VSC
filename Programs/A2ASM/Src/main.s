@@ -45,12 +45,9 @@ main
 ;* Change value from x1234 to x4321
     ldr     R1,=VariableB   ; Anw09
     ldrh    R6,[R1]         ; Anw0A
-    ;mov     R7, #0x30ED     ; Anw0B
-    ;add     R6, R6, R7      ; Anw0C
-    strb    R6,[R1,#1]         ; Anw0D
-	lsr     R6,#8
-	strb    R6,[R1]
-
+    mov     R7, #0x21DE     ; Anw0B
+    add     R6, R6, R7      ; Anw0C
+    strh    R6,[R1]         ; Anw0D
     b .                     ; Anw0E
     
     ALIGN
