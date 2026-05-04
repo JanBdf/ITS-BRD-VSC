@@ -24,7 +24,7 @@ VariableC   DCW 0x0000
     AREA  |.text|, CODE, READONLY, ALIGN = 3    
     ALIGN   
 main
-    BL initITSboard             ; needed by the board to setup
+    BL initITSboard         ; needed by the board to setup
 ;* swap memory - Is there another, at least optimized approach?
     ldr     R0,=VariableA   ; Anw01
     ldrb    R2,[R0]         ; Anw02
@@ -42,7 +42,7 @@ main
 	lsr     R5, #8
 	strb    R5,[R8]
     
-;* Change value from x1234 to x4321
+;* Change value from x1234 to x3412
     ldr     R1,=VariableB   ; Anw09
     ldrh    R6,[R1]         ; Anw0A
     mov     R7, #0x21DE     ; Anw0B
