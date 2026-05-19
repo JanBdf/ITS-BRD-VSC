@@ -4,6 +4,13 @@
 
 - - - 
 
+## Analyse der Aufgabe
+
+Die Zahlen von 2 bis 1000 sollen durchgegangen werden. Für jede Zahl sollen alle Vielfachen dieser Zahl als Kandidaten für Primzahlen entfernt werden. Wenn eine Zahl schon rausgestrichem ist, kann sie übersprungen werden, da ihre Vielfachen ebenfalls schon rausgestrichen sind. 
+Da für jede beliebige Zahl die kleinste, nicht rausgestrichene Zahl das Quadrat dieser ist, können alle Zahlen über 31 ignoriert werden, da ihr Quadrat über 1000 liegt.
+
+Anschließend müssen wir nur noch diese Liste der Zahlen durchgehen und diejenigen Zahlen in ein separates Array / Feld schreiben, die noch als Primzahl geblieben sind.
+
 ## Pseudocode (in c style)
 
 private int8_t* calcPrimes(void) {
