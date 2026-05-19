@@ -27,4 +27,4 @@ solution:
 
   # List related projects.
   projects:
-    - project: A4ASM.cproject.yml
+    - project: PrimzahlSiebASM.cproject.yml
