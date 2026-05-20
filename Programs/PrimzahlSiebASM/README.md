@@ -14,7 +14,7 @@ Anschließend müssen wir nur noch diese Liste der Zahlen durchgehen und diejeni
 ## Pseudocode (in c style)
 
 private int8_t* calcPrimes(void) {
-    int8_t num_arr[999] = {[0 ... 998] = 1}
+    uint8_t num_arr[999] = {[0 ... 998] = 1}
 
     for (int16_t base = 2; base <= 31; base++) {
         if (num_arr[base - 2] == 0) {
@@ -30,7 +30,7 @@ private int8_t* calcPrimes(void) {
 }
 
 private int16_t* storePrimes(int8_t *num_arr) {
-    int16_t primes[500] = {0};
+    uint16_t primes[500] = {0};
     num_primes = 0;
 
     for (int index = 0; index <= 998; index++) {
