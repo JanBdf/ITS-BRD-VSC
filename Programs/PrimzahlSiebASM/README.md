@@ -1,6 +1,6 @@
 # Task 4
 
-> Jan Bittendorf | 14.05.2026
+> Jan Bittendorf | 21.05.2026
 
 - - - 
 
@@ -46,3 +46,22 @@ public void main(void) {
     int8_t *num_arr = calcPrimes();
     int16_t *primes = storePrimes(num_arr);
 }
+
+## Konzept zur Umwandlung in Assembly
+
+### Schleifen
+
+Verwendet wurden zwei `for` Schleifen. Diese müssen in Assembly als while Schleife umgesetzt werden. 
+Dafür setzen wir zuerst unsere Laufvariable und überprüfen, ob sie noch innerhalb des festgelegten Ramens liegt. 
+Falls nicht, springen wir zum Ende. 
+Als nächstes folgt der Inhalt der Schleife. 
+Am Ende des Inhalts zählen wir unsere Laufvariable hoch und springen zurück zur Überprüfung.
+
+### Vergleiche und Spruchbefehle
+
+Einerseits wollen wir bei den Schleifen zum Ende springen, wenn wir den Schwellwert überschritten haben. Dafür können `CMP` und `BGT` verwendet werden, um zu springen, wenn der im Register gespeicherte Wert größer ist, als der Vergleichswert.
+Andererseits überprüfen wir, ob Zahlen selbst Vielfache sind, um die Vielfachen nicht erneut rauszustreichen und um damit Laufzeit zu sparen. Dazu müssen überprüfen, ob der Wert im Array `0` ist. Verwendet werden können der Vergleich `CMP` und der Sprungbefehl `BEQ` um zurück zu Schleife zu springen, wenn der Wert dem Vergleichswert entspricht.
+
+## Datentypen
+
+Das Sieb wird angelegt, indem wir im Programmbereich `MyData` einen Speicherbereich mit den Befehl `FILL` reservieren. Dabei können wir angeben, dass der Bereich mit Einsen gefüllt werden soll. Angegeben werden muss außerdem die Größe eines Elements als 1 Byte. Danach können wir die Startadresse laden und mit einem Offset auf spezifische Elemente des Arrays zugreifen.
