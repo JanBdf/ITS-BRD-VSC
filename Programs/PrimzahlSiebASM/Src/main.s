@@ -32,44 +32,41 @@ prime_arr SPACE 1000
 ;--------------------------------------------
 	EXPORT main [CODE]
 	
-main	PROC
-        BL initITSboard ; needed by ITS-BRD for setup
+main		PROC
+        	BL initITSboard ; needed by ITS-BRD for setup
 
-		MOV r2,=num_arr
-; set r0 to 2 (base / loop var)
-		MOV r0, #2
-; create loop label
-; 	compare r0 to 31
-loop_0	CMP r0,#31
-; 	jump if greater to exit 2
-		BGT exit_0
-; 	check if num_arr[r0 - 2] == 0
-		LDR r3,[r2,r0]
-		CMP r3,#0
-; 	jump if equal to loop
-		ADDEQ r0,r0,#1
-		BEQ loop
-; 	set r1 to r0 * r0 (inner loop var)
-		MUL r1,r0,r0
-; 	create loop label 2
-; 		compare r1 to 998 
-loop_1	CMP r1,#1000
-;       if greater jump to exit
-		BGT exit_1
-; 		set num_arr[prod - 2] to 0;
-		STR #0,[r2,r1]
-; 		add r1 to r1
-		ADD r1,r1,r1
-; 		jump to loop 2
-		B loop_1
-; 	create exit label
-; 	add 1 to r0
-exit_1	ADD r0,r0,#1
-; 	jump to loop
-		B loop
-; create label exit 2
-exit_0 	NOP
-;
+			LDR r2,=num_arr  ; 
+for_01		MOV r0, #2       ; var base 
+
+until_01	CMP r0,#31       ; 
+			BGT enddo_01     ;
+
+
+do_01		LDRB r3,[r2,r0]  ; 
+
+if_01		CMP r3,#0        ; 
+			BEQ else_01      ;
+
+then_01
+for_02		MUL r1,r0,r0     ; var prod
+
+until_02	CMP r1,#1000     ;
+			BGT enddo_02     ;
+
+do_02		MOV r3,#0        ;
+			STRB r3,[r2,r1]  ;
+
+step_02		ADD r1,r1,r0     ;
+			B do_02          ;
+
+enddo_02
+else_01
+step_01		ADD r0,r0,#1     ;
+			B until_01       ;
+
+endif_01
+enddo_01	NOP
+
 ; set r1 to 0 (num_primes)
 ; set r0 to 0 (loop var)
 ; create loop label 3
