@@ -57,26 +57,36 @@ do_02		MOV r3,#0        ;
 			STRB r3,[r2,r1]  ;
 
 step_02		ADD r1,r1,r0     ;
-			B do_02          ;
+			B   do_02        ;
 
 enddo_02
 else_01
 step_01		ADD r0,r0,#1     ;
-			B until_01       ;
+			B   until_01     ;
 
 endif_01
 enddo_01	NOP
 
-; set r1 to 0 (num_primes)
-; set r0 to 0 (loop var)
-; create loop label 3
-; 	compare r0 to 998
-; 	if greater jump to exit 3
-; 	test num_arr[r0]
-; 	if not zero set primes[r1] to r0 + 2
-; 	add 1 to r0
-; 	jump to loop 3
-; create label exit 3
+; --- Part 2 -----------------------------------------
+
+            MOV r3,=prime_arr  ; Load Address of prime_arr
+            MOV r1,#0          ; num_primes = 0
+for_03      MOV r0,#0          ; index = 0
+
+until_03    CMP r0,#998        ; Check index and 998
+            BGT enddo_03       ; Jump to enddo_03 if greater
+
+do_03       LRD r4,[r2,r0]     ; Load num_arr[index]
+            BEQ step_03        ; Jump to step_03 if zero
+            STR r0,[r3,r1]     ; Store index into prime_arr[num_primes]
+            ADD r1,r1,#1       ; num_primes++
+
+step_03     ADD r0,r0,#1       ; index++
+            B   until_03       ; Jump to until_03
+
+enddo_03    NOP                ; Placeholder code
+
+
 
 forever	b	forever		; loop indefinitely
 		ENDP
