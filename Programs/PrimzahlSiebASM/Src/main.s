@@ -33,62 +33,66 @@ prime_arr SPACE 1000
 	EXPORT main [CODE]
 	
 main		PROC
-        	BL initITSboard ; needed by ITS-BRD for setup
+        	BL initITSboard     ; needed by ITS-BRD for setup
 
-			LDR r2,=num_arr  ; 
-for_01		MOV r0, #2       ; var base 
+			LDR  r2,=num_arr    ; Load address of num_arr
+for_01		MOV  r0, #2         ; base = 2
 
-until_01	CMP r0,#31       ; 
-			BGT enddo_01     ;
+until_01	CMP  r0,#31         ; Compare base to 31
+			BGT  enddo_01       ; If its greater, jump to enddo_01
 
 
-do_01		LDRB r3,[r2,r0]  ; 
+do_01		LDRB r3,[r2,r0]     ; Load num_arr[base]
 
-if_01		CMP r3,#0        ; 
-			BEQ else_01      ;
+if_01		CMP  r3,#0          ; Compare loaded value to 0
+			BEQ  else_01        ; If 0, jump to else_01
 
 then_01
-for_02		MUL r1,r0,r0     ; var prod
+for_02		MUL  r1,r0,r0       ; prod = base ** 2
 
-until_02	CMP r1,#1000     ;
-			BGT enddo_02     ;
+until_02	CMP  r1,#1000       ; 
+			BGT  enddo_02       ;
 
-do_02		MOV r3,#0        ;
-			STRB r3,[r2,r1]  ;
+do_02		MOV  r3,#0          ;
+			STRB r3,[r2,r1]     ;
 
-step_02		ADD r1,r1,r0     ;
-			B   do_02        ;
+step_02		ADD  r1,r1,r0       ;
+			B    until_02       ;
 
 enddo_02
 else_01
-step_01		ADD r0,r0,#1     ;
-			B   until_01     ;
+step_01		ADD  r0,r0,#1       ;
+			B    until_01       ;
 
 endif_01
 enddo_01	NOP
 
 ; --- Part 2 -----------------------------------------
 
-            MOV r3,=prime_arr  ; Load Address of prime_arr
-            MOV r1,#0          ; num_primes = 0
-for_03      MOV r0,#0          ; index = 0
+            LDR  r3,=prime_arr  ; Load address of prime_arr
+            MOV  r1,#0          ; num_primes = 0
+for_03      MOV  r0,#2          ; index = 2
 
-until_03    CMP r0,#998        ; Check index and 998
-            BGT enddo_03       ; Jump to enddo_03 if greater
+until_03    CMP  r0,#1000       ; Check index and 1000
+            BGT  enddo_03       ; Jump to enddo_03 if greater
 
-do_03       LRD r4,[r2,r0]     ; Load num_arr[index]
-            BEQ step_03        ; Jump to step_03 if zero
-            STR r0,[r3,r1]     ; Store index into prime_arr[num_primes]
-            ADD r1,r1,#1       ; num_primes++
+do_03
+if_02       LDRB r4,[r2,r0]     ; Load num_arr[index]
+			CMP  r4,#0
+            BEQ  endif_02       ; Jump to endif_02 if zero
 
-step_03     ADD r0,r0,#1       ; index++
-            B   until_03       ; Jump to until_03
+then_02     STRH r0,[r3,r1]     ; Store index into prime_arr[num_primes]
+            ADD  r1,r1,#2       ; num_primes++
 
-enddo_03    NOP                ; Placeholder code
+endif_02
+step_03     ADD  r0,r0,#1       ; index++
+            B    until_03       ; Jump to until_03
 
+enddo_03    NOP                 ; Placeholder code
 
+; --- Program end ------------------------------------
 
-forever	b	forever		; loop indefinitely
+forever	b	forever	          	; loop indefinitely
 		ENDP
 	
 		ALIGN

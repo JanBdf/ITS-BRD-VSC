@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DisplayWaveshare" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ITS_BRD_LIB" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ITS_Keil_prj_base" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lwip" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/stm32cubef4" vcs="Git" />
+  </component>
+</project>
