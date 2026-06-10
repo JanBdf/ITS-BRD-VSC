@@ -70,10 +70,10 @@ enddo_01	NOP
 ; --- Part 2 -----------------------------------------
 
             LDR  r3,=prime_arr  ; Load address of prime_arr
-            MOV  r1,#0          ; num_primes = 0
-for_03      MOV  r0,#2          ; index = 2
+            MOV  r1,#0          ; prime_index = 0
+for_03      MOV  r0,#2          ; num_index = 2
 
-until_03    CMP  r0,#1000       ; Check index and 1000
+until_03    CMP  r0,#1000       ; Check num_index and 1000
             BGT  enddo_03       ; Jump to enddo_03 if greater
 
 do_03
@@ -81,11 +81,11 @@ if_02       LDRB r4,[r2,r0]     ; Load num_arr[index]
 			CMP  r4,#0
             BEQ  endif_02       ; Jump to endif_02 if zero
 
-then_02     STRH r0,[r3,r1]     ; Store index into prime_arr[num_primes]
-            ADD  r1,r1,#2       ; num_primes++
+then_02     STRH r0,[r3,r1]     ; Store num_index into prime_arr[prime_index]
+            ADD  r1,r1,#2       ; prime_index += 2
 
 endif_02
-step_03     ADD  r0,r0,#1       ; index++
+step_03     ADD  r0,r0,#1       ; num_index++
             B    until_03       ; Jump to until_03
 
 enddo_03    NOP                 ; Placeholder code
