@@ -153,7 +153,7 @@ if_09		CMP		r7,r8
 then_09		ADD		r0,r4,#10
 			MOV		r1,#6
 			BL		lcdGotoXY
-			LDRB	r0,[r5,r4]
+			MOV		r0,r7
 			STRB	r0,[r6,r4]
 			BL		lcdPrintC
 endif_09
@@ -187,7 +187,7 @@ then_10		BL 		reset_timer
 
 endif_10	MUL		R6,R5,R4
 			SUB		R0,R0,R6
-			ADD		R5,R5,#0x30
+			ADD		R5,R5,#'0'
 			MOV		R7,R1
 if_11		CMP		R7,#2
 then_11		ADDGE	R7,R7,#1

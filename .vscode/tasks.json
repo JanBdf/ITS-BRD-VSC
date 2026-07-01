@@ -28,7 +28,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/Programs/StoppuhrASM",
+                "cwd": "${workspaceFolder}/Programs/LauflichtASM",
                 "shell": {
                     "executable": "/bin/bash",
                     "args": [
@@ -51,7 +51,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/Programs/StoppuhrASM",
+                "cwd": "${workspaceFolder}/Programs/LauflichtASM",
                 "shell": {
                     "executable": "/bin/bash",
                     "args": [
@@ -73,7 +73,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/Programs/StoppuhrASM",
+                "cwd": "${workspaceFolder}/Programs/LauflichtASM",
                 "shell": {
                     "executable": "/bin/bash",
                     "args": [
@@ -85,8 +85,6 @@
                 "gdbserver",
                 "--probe",
                 "stlink:",
-                "--connect",
-                "attach",
                 "--persist",
                 "--reset-run",
                 "--cbuild-run",
@@ -111,7 +109,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/Programs/StoppuhrASM",
+                "cwd": "${workspaceFolder}/Programs/LauflichtASM",
                 "shell": {
                     "executable": "/bin/bash",
                     "args": [

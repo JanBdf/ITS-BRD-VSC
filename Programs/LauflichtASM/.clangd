@@ -1,0 +1,5 @@
+CompileFlags:
+  CompilationDatabase: /Users/jan/Desktop/ITS/gt1/ITS-BRD-VSC/Programs/LauflichtASM/out/LauflichtASM/ITSboard_Assembly/Debug
+  Add:
+    - -include
+    - /Users/jan/Desktop/ITS/gt1/ITS-BRD-VSC/Programs/LauflichtASM/out/LauflichtASM/ITSboard_Assembly/Debug/compile_macros.h

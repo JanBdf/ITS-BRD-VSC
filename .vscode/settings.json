@@ -117,11 +117,15 @@
   "cmake.ignoreCMakeListsMissing": true,
   "C_Cpp_Runner.msvcBatchPath": "",
   "clangd.arguments": [
-    "--compile-commands-dir=/Users/jan/Desktop/ITS/gt1/ITS-BRD-VSC/Programs/StoppuhrASM/out/StoppuhrASM/ITSboard_Assembly/Debug"
+    "--compile-commands-dir=/Users/jan/Desktop/ITS/gt1/ITS-BRD-VSC/Programs/LauflichtASM/out/LauflichtASM/ITSboard_Assembly/Debug"
   ],
   "debug.hideSlowPreLaunchWarning": true,
   "debug.showInStatusBar": "never",
   "files.associations": {
     "*.s": "arm-debugger.arm"
-  }
+  },
+  "memory-inspector.addressPadding": "32bit",
+  "memory-inspector.groupings.groupsPerRow": "Autofit",
+  "memory-inspector.groupings.MAUsPerGroup": 4,
+  "memory-inspector.scrollingBehavior": "Auto-Append"
 }
