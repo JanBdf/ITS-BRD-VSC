@@ -117,13 +117,27 @@
   "cmake.ignoreCMakeListsMissing": true,
   "C_Cpp_Runner.msvcBatchPath": "",
   "clangd.arguments": [
+<<<<<<< HEAD
     "--compile-commands-dir=/Users/franz/GIT_HUB/ITS-BRD-VSC/Programs/Karl/out/Karl/ITSboard/Debug"
+=======
+    "--compile-commands-dir=/Users/jan/Documents/Studium/ITS/gt1/ITS-BRD-VSC/Programs/StoppuhrASM/out/StoppuhrASM/ITSboard_Assembly/Debug"
+>>>>>>> 12a39a3 (changed vscode config)
   ],
   "debug.hideSlowPreLaunchWarning": true,
   "debug.showInStatusBar": "never",
   "files.associations": {
+<<<<<<< HEAD
     "*.s": "arm-debugger.arm",
     "*.c": "c",
     "*.h": "c"
   }
+=======
+    "*.s": "arm-debugger.arm"
+  },
+  "memory-inspector.addressPadding": "32bit",
+  "memory-inspector.groupings.groupsPerRow": "Autofit",
+  "memory-inspector.groupings.MAUsPerGroup": 4,
+  "memory-inspector.scrollingBehavior": "Auto-Append",
+  "cdt.debug.sourceHighlighting": false
+>>>>>>> 12a39a3 (changed vscode config)
 }

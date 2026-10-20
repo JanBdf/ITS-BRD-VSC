@@ -1,0 +1,9 @@
+{
+    "targetSet": {
+        "Programs/StoppuhrASM/StoppuhrASM": {
+            "activeTargetType": "ITSboard_Assembly"
+        }
+    },
+    "activeSolution": "../Programs/StoppuhrASM/StoppuhrASM.csolution.yml",
+    "activeTarget": "ITSboard_Assembly"
+}
