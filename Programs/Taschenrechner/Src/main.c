@@ -25,6 +25,9 @@
 #include <stdio.h>
 
 static Terminal terminal;
+static bool error_state;
+
+#define BUFFER_SIZE 32
 
 void print_err(char* message) {
    setTextColorTerm(RED, &terminal);
@@ -32,26 +35,24 @@ void print_err(char* message) {
    setTextColorTerm(BLACK, &terminal);
 }
 
-void handle_error(char* msg) {
+void handle_error(char* message) {
    clearTerm(&terminal);
-   print_err(msg);
-   print_err("\n\nResetting in 1 sec");
-
-   HAL_Delay(2000);
-   reset();
+   print_err(message);
+   print_err("\n\nPress C to reset");
+   error_state = true;
 }
 
 void print_num(int num) {
-   char buf[32];
+   char buf[BUFFER_SIZE];
    sprintf(buf, "%d", num);
    printTerm(buf, &terminal);
 }
 
-void token_unknown(int value) {
+void token_unknown(int _) {
    handle_error("Unknown Input");
 }
 
-void token_overflow(int value) { // Never sent by scanner
+void token_overflow(int _) { // Never sent by scanner
    handle_error("Input overflow");
 }
 
@@ -68,6 +69,7 @@ void token_double(int value) {
 
    if (stack_ptr == -1) {
       handle_error("Stack is empty");
+      return;
    }
 
    int stack_val = 0;
@@ -87,6 +89,7 @@ void reset() {
    clearTerm(&terminal);
    //setPosTerm(0, 0, &terminal);
    stack_clear();
+   error_state = false;
 }
 
 void token_clear(int value) {
@@ -98,7 +101,14 @@ void token_prt_all(int value) { // TODO: only print 3 in reverse order
    
    stack_get_ptr(&stack_ptr);
 
-   for (int i=(stack_ptr - 1); i>=0; i--) {
+   if (stack_ptr == -1) {
+      handle_error("Stack is empty");
+      return;
+   }
+
+   int min = (stack_ptr > 2) ? (stack_ptr - 2) : 0;
+
+   for (int i=min; i<=stack_ptr; i++) {
       int value = 0;
 
       if (stack_get(i, &value) != SUCCESS) {
@@ -107,7 +117,7 @@ void token_prt_all(int value) { // TODO: only print 3 in reverse order
       }
 
       print_num(value);
-      printChar(' ', &terminal);
+      printTerm("\n", &terminal);
    }
 }
 
@@ -118,6 +128,7 @@ void token_prt(int value) {
 
    if (stack_ptr == -1) {
       handle_error("Stack is empty");
+      return;
    }
 
    int stack_val = 0;
@@ -146,17 +157,35 @@ void token_swap(int value) {
 }
 
 int add(int left, int right, int* result) {
-   *result = left + right;
+   long large_result = left + right;
+
+   if ((large_result > INT32_MAX) || (large_result < INT32_MIN)) {
+      return -1;
+   }
+
+   *result = large_result;
    return SUCCESS;
 }
 
 int sub(int left, int right, int* result) {
-   *result = left - right;
+   long large_result = left - right;
+
+   if ((large_result > INT32_MAX) || (large_result < INT32_MIN)) {
+      return -1;
+   }
+
+   *result = large_result;
    return SUCCESS;
 }
 
 int mul(int left, int right, int* result) {
-   *result = left * right;
+   long large_result = left * right;
+
+   if ((large_result > INT32_MAX) || (large_result < INT32_MIN)) {
+      return -1;
+   }
+
+   *result = large_result;
    return SUCCESS;
 }
 
@@ -165,7 +194,13 @@ int div(int left, int right, int* result) {
       return -1;
    }
 
-   *result = left / right;
+   long large_result = left / right;
+
+   if ((large_result > INT32_MAX) || (large_result < INT32_MIN)) {
+      return -1;
+   }
+
+   *result = large_result;
    return SUCCESS;
 }
 
@@ -206,10 +241,15 @@ int main(void) {
    
    init_display();
    terminal = makeKeyPad();
+   error_state = false;
 
    while (1) {
       T_token token = next_token(); 
       int value = token.val;
+
+      if (error_state && (token.tok != CLEAR)) {
+         continue;
+      }
 
       switch (token.tok) {
          case NUMBER:
