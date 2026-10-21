@@ -1,5 +1,10 @@
 CompileFlags:
-  CompilationDatabase: /Users/jan/Desktop/ITS/gt1/ITS-BRD-VSC/Programs/LauflichtASM/out/LauflichtASM/ITSboard_Assembly/Debug
+  CompilationDatabase: /home/jan/Projects/ITS/W26/ITS-BRD-VSC/Programs/LauflichtASM/out/LauflichtASM/ITSboard_Assembly/Debug
+
+---
+If:
+  PathMatch: .*\.(c|C|h)$
+CompileFlags:
   Add:
     - -include
-    - /Users/jan/Desktop/ITS/gt1/ITS-BRD-VSC/Programs/LauflichtASM/out/LauflichtASM/ITSboard_Assembly/Debug/compile_macros.h
+    - /home/jan/Projects/ITS/W26/ITS-BRD-VSC/Programs/LauflichtASM/out/LauflichtASM/ITSboard_Assembly/Debug/compile_macros_c.h
