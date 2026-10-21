@@ -12,6 +12,7 @@ __pycache__/
 
 # Ignore User specific setting
 /Programs/*/*.uvguix.*
+.vscode
 
 ### macOS ###
 # General
