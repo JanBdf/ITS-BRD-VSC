@@ -1,5 +1,5 @@
 CompileFlags:
-  CompilationDatabase: /home/jan/Projects/ITS/W26/ITS-BRD-VSC/Programs/StoppuhrASM/out/StoppuhrASM/ITSboard_Assembly/Debug
+  CompilationDatabase: /Users/jan/Documents/Studium/ITS/gt1/ITS-BRD-VSC/Programs/StoppuhrASM/out/StoppuhrASM/ITSboard_Assembly/Debug
 
 ---
 If:
@@ -7,4 +7,4 @@ If:
 CompileFlags:
   Add:
     - -include
-    - /home/jan/Projects/ITS/W26/ITS-BRD-VSC/Programs/StoppuhrASM/out/StoppuhrASM/ITSboard_Assembly/Debug/compile_macros_c.h
+    - /Users/jan/Documents/Studium/ITS/gt1/ITS-BRD-VSC/Programs/StoppuhrASM/out/StoppuhrASM/ITSboard_Assembly/Debug/compile_macros_c.h
