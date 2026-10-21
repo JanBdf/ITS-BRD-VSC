@@ -1,11 +1,13 @@
 /**
  ******************************************************************************
  * @file    main.c
- * @author  Franz Korf
- * @brief   Kleines Testprogramm fuer neu erstelle Fonts.
+ * @author  Jan Bittendorf
+ * @brief   Simple calculator for the ITS-BRD using polish notation
  ******************************************************************************
  */
 /* Includes ------------------------------------------------------------------*/
+
+#include "main.h"
 
 #include "LCD_GUI.h"
 #include "LCD_Touch.h"
@@ -24,6 +26,25 @@
 
 static Terminal terminal;
 
+void print_err(char* message) {
+   clearTerm(&terminal);
+   setTextColorTerm(RED, &terminal);
+   printTerm(message, &terminal);
+   setTextColorTerm(BLACK, &terminal);
+}
+
+void handle_stack_overflow() {
+   print_err("Stack Overflow!\nResetting in 1 sec");
+   HAL_Delay(1000);
+   token_clear(0);
+}
+
+void print_num(int num) {
+   char buf[32];
+   sprintf(buf, "%d", num);
+   printTerm(buf, &terminal);
+}
+
 void token_unknown(int value) {
    printTerm("Unknown Input\nReset using C", &terminal);
 }
@@ -41,20 +62,17 @@ void token_enter(int value) {} // Never sent by scanner
 void token_double(int value) {
    int stack_ptr = 0;
 
-   if (stack_used(&stack_ptr) != SUCCESS) {
-      printTerm("I don't even know", &terminal);
-      return;
-   }
+   stack_get_ptr(&stack_ptr);
 
    int stack_val = 0;
 
    if (stack_get(stack_ptr, &stack_val) != SUCCESS) {
-      printTerm("I don't even know", &terminal);
+      print_err("Invalid Stack Index");
       return;
    }
 
    if (stack_push(stack_val) != SUCCESS) {
-      printTerm("Stack Overflow", &terminal);
+      handle_stack_overflow();
       return;
    }
 }
@@ -68,12 +86,7 @@ void token_clear(int value) {
 void token_prt_all(int value) { // TODO: only print 3 in reverse order
    int stack_ptr = -1;
    
-   if (stack_used(&stack_ptr) != SUCCESS) {
-      printTerm("I don't even know", &terminal);
-      return;
-   }
-
-   char buf[32];
+   stack_get_ptr(&stack_ptr);
 
    for (int i=(stack_ptr - 1); i>=0; i--) {
       int value = 0;
@@ -83,8 +96,7 @@ void token_prt_all(int value) { // TODO: only print 3 in reverse order
          return;
       }
 
-      sprintf(buf, "%d", value);
-      printTerm(buf, &terminal);
+      print_num(value);
       printChar(' ', &terminal);
    }
 }
@@ -92,10 +104,7 @@ void token_prt_all(int value) { // TODO: only print 3 in reverse order
 void token_prt(int value) {
    int stack_ptr = 0;
 
-   if (stack_used(&stack_ptr) != SUCCESS) {
-      printTerm("I dont't even know", &terminal);
-      return;
-   }
+   stack_get_ptr(&stack_ptr);
 
    int stack_val = 0;
 
@@ -104,9 +113,7 @@ void token_prt(int value) {
       return;
    }
 
-   char buf[32];
-   sprintf(buf, "%d", stack_val);
-   printTerm(buf, &terminal);
+   print_num(stack_val);
 }
 
 void token_swap(int value) {
@@ -182,7 +189,6 @@ int main(void) {
    init_display();
    terminal = makeKeyPad();
 
-   // const int POLL_DELAY = 10000;
    while (1) {
       T_token token = next_token(); 
       int value = token.val;
@@ -231,8 +237,6 @@ int main(void) {
             token_unknown(value);
             break;
       }
-
-      // HAL_Delay(POLL_DELAY);
    }
 }
 

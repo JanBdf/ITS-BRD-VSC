@@ -24,14 +24,12 @@ int stack_pop(int* value) {
     return SUCCESS;
 }
 
-int stack_clear() {
+void stack_clear() {
     stack_ptr = 0;
-    return SUCCESS;
 }
 
-int stack_used(int* value) {
+void stack_get_ptr(int* value) {
     *value = stack_ptr;
-    return SUCCESS;
 }
 
 int stack_get(int index, int* value) {

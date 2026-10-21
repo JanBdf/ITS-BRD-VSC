@@ -28,7 +28,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/Programs/LauflichtASM",
+                "cwd": "${workspaceFolder}/Programs/Taschenrechner",
                 "shell": {
                     "executable": "/bin/bash",
                     "args": [
@@ -51,7 +51,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/Programs/LauflichtASM",
+                "cwd": "${workspaceFolder}/Programs/Taschenrechner",
                 "shell": {
                     "executable": "/bin/bash",
                     "args": [
@@ -73,7 +73,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/Programs/LauflichtASM",
+                "cwd": "${workspaceFolder}/Programs/Taschenrechner",
                 "shell": {
                     "executable": "/bin/bash",
                     "args": [
@@ -109,7 +109,7 @@
             "type": "shell",
             "command": "pyocd",
             "options": {
-                "cwd": "${workspaceFolder}/Programs/LauflichtASM",
+                "cwd": "${workspaceFolder}/Programs/Taschenrechner",
                 "shell": {
                     "executable": "/bin/bash",
                     "args": [
@@ -123,6 +123,26 @@
                 "${command:cmsis-csolution.getCbuildRunFile}"
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "C-Pretty-Printer",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "${workspaceFolder}/bin/format_all.py",
+                "${command:cmsis-csolution.getSolutionFile}"
+            ],
+            "group": "none"
+        },
+        {
+            "label": "C-Linter",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "${workspaceFolder}/bin/lint_all.py",
+                "${command:cmsis-csolution.getSolutionFile}"
+            ],
+            "group": "none"
         }
     ]
 }

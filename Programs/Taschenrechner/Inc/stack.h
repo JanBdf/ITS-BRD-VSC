@@ -7,8 +7,8 @@
 
 int stack_push(int value);
 int stack_pop(int* value);
-int stack_clear();
-int stack_used(int* value);
+void stack_clear();
+void stack_get_ptr(int* value);
 int stack_get(int index, int* value);
 
 #endif // STACK_H
