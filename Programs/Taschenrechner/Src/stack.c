@@ -29,7 +29,7 @@ void stack_clear() {
 }
 
 void stack_get_ptr(int* value) {
-    *value = stack_ptr;
+    *value = stack_ptr - 1;
 }
 
 int stack_get(int index, int* value) {

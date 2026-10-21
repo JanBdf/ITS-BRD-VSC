@@ -27,16 +27,18 @@
 static Terminal terminal;
 
 void print_err(char* message) {
-   clearTerm(&terminal);
    setTextColorTerm(RED, &terminal);
    printTerm(message, &terminal);
    setTextColorTerm(BLACK, &terminal);
 }
 
-void handle_stack_overflow() {
-   print_err("Stack Overflow!\nResetting in 1 sec");
-   HAL_Delay(1000);
-   token_clear(0);
+void handle_error(char* msg) {
+   clearTerm(&terminal);
+   print_err(msg);
+   print_err("\n\nResetting in 1 sec");
+
+   HAL_Delay(2000);
+   reset();
 }
 
 void print_num(int num) {
@@ -46,15 +48,15 @@ void print_num(int num) {
 }
 
 void token_unknown(int value) {
-   printTerm("Unknown Input\nReset using C", &terminal);
+   handle_error("Unknown Input");
 }
 
 void token_overflow(int value) { // Never sent by scanner
-   printTerm("Input overflow", &terminal);
+   handle_error("Input overflow");
 }
 
 void token_unexpected(int value) {
-   printTerm("Unexpected Input\nReset using C", &terminal);
+   handle_error("Unexpected Input");
 }
 
 void token_enter(int value) {} // Never sent by scanner
@@ -64,23 +66,31 @@ void token_double(int value) {
 
    stack_get_ptr(&stack_ptr);
 
+   if (stack_ptr == -1) {
+      handle_error("Stack is empty");
+   }
+
    int stack_val = 0;
 
    if (stack_get(stack_ptr, &stack_val) != SUCCESS) {
-      print_err("Invalid Stack Index");
+      handle_error("Invalid Stack Index");
       return;
    }
 
    if (stack_push(stack_val) != SUCCESS) {
-      handle_stack_overflow();
+      handle_error("Stack Overflow");
       return;
    }
 }
 
-void token_clear(int value) {
+void reset() {
    clearTerm(&terminal);
    //setPosTerm(0, 0, &terminal);
    stack_clear();
+}
+
+void token_clear(int value) {
+   reset();
 }
 
 void token_prt_all(int value) { // TODO: only print 3 in reverse order
@@ -92,7 +102,7 @@ void token_prt_all(int value) { // TODO: only print 3 in reverse order
       int value = 0;
 
       if (stack_get(i, &value) != SUCCESS) {
-         printTerm("I don't even know", &terminal);
+         handle_error("Invalid Stack pointer");
          return;
       }
 
@@ -106,10 +116,14 @@ void token_prt(int value) {
 
    stack_get_ptr(&stack_ptr);
 
+   if (stack_ptr == -1) {
+      handle_error("Stack is empty");
+   }
+
    int stack_val = 0;
 
-   if (stack_get(stack_ptr - 1, &stack_val) != SUCCESS) {
-      printTerm("Stack is empty", &terminal);
+   if (stack_get(stack_ptr, &stack_val) != SUCCESS) {
+      handle_error("Stack is empty");
       return;
    }
 
@@ -121,12 +135,12 @@ void token_swap(int value) {
    int b = 0; // NOLINT
 
    if ((stack_pop(&a) != SUCCESS) || (stack_pop(&b) != SUCCESS)) {
-      printTerm("Stack Underflow", &terminal);
+      handle_error("Stack Underflow");
       return;
    }
 
    if ((stack_push(b) != SUCCESS) || (stack_push(a) != SUCCESS)) {
-      printTerm("Stack Overflow (how?)", &terminal);
+      handle_error("Stack Overflow");
       return;
    }
 }
@@ -147,6 +161,10 @@ int mul(int left, int right, int* result) {
 }
 
 int div(int left, int right, int* result) {
+   if (result == 0) {
+      return -1;
+   }
+
    *result = left / right;
    return SUCCESS;
 }
@@ -156,26 +174,26 @@ void token_op(int (*func)(int, int, int*)) {
    int right = 0;
 
    if ((stack_pop(&right) != SUCCESS) || (stack_pop(&left) != SUCCESS)) {
-      printTerm("Stack Underflow", &terminal);
+      handle_error("Stack Underflow");
       return;
    }
 
    int result = 0;
    
    if (func(left, right, &result) != SUCCESS) {
-      printTerm("Illegal Operation", &terminal);
+      handle_error("Illegal Operation");
       return;
    }
 
    if (stack_push(result) != SUCCESS) {
-      printTerm("Stack Overflow (how?)", &terminal);
+      handle_error("Stack Overflow");
       return;
    }
 }
 
 void token_number(int value) {
    if (stack_push(value) != SUCCESS) {
-      printTerm("Stack Overflow", &terminal);
+      handle_error("Stack Overflow");
       return;
    }
 }

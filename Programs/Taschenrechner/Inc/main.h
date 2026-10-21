@@ -17,7 +17,7 @@ void token_enter(int value);
 void token_unexpected(int value);
 void token_overflow(int value);
 void token_unknown(int value);
-void handle_stack_overflow();
 void print_err(char* message);
+void reset();
 
 #endif // ifndef MAIN_H
