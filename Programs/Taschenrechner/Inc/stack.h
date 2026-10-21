@@ -4,6 +4,7 @@
 #define SUCCESS 0
 #define STACK_OVERFLOW (-1)
 #define STACK_UNDERFLOW (-2)
+#define INVALID_STACK_INDEX (-3)
 
 int stack_push(int value);
 int stack_pop(int* value);

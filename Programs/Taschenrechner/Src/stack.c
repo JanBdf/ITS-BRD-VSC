@@ -34,11 +34,11 @@ void stack_get_ptr(int* value) {
 
 int stack_get(int index, int* value) {
     if (index < 0) {
-        return STACK_UNDERFLOW;
+        return INVALID_STACK_INDEX;
     }
 
     if (index >= STACK_SIZE) {
-        return STACK_OVERFLOW;
+        return INVALID_STACK_INDEX;
     }
 
     *value = stack[index];

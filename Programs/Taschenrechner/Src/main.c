@@ -74,12 +74,12 @@ void token_double(int value) {
 
    int stack_val = 0;
 
-   if (stack_get(stack_ptr, &stack_val) != SUCCESS) {
+   if (stack_get(stack_ptr, &stack_val) == INVALID_STACK_INDEX) {
       handle_error("Invalid Stack Index");
       return;
    }
 
-   if (stack_push(stack_val) != SUCCESS) {
+   if (stack_push(stack_val) == STACK_OVERFLOW) {
       handle_error("Stack Overflow");
       return;
    }
@@ -111,7 +111,7 @@ void token_prt_all(int value) { // TODO: only print 3 in reverse order
    for (int i=min; i<=stack_ptr; i++) {
       int value = 0;
 
-      if (stack_get(i, &value) != SUCCESS) {
+      if (stack_get(i, &value) == INVALID_STACK_INDEX) {
          handle_error("Invalid Stack pointer");
          return;
       }
@@ -133,7 +133,7 @@ void token_prt(int value) {
 
    int stack_val = 0;
 
-   if (stack_get(stack_ptr, &stack_val) != SUCCESS) {
+   if (stack_get(stack_ptr, &stack_val) == INVALID_STACK_INDEX) {
       handle_error("Stack is empty");
       return;
    }
@@ -145,47 +145,46 @@ void token_swap(int value) {
    int a = 0; // NOLINT
    int b = 0; // NOLINT
 
-   if ((stack_pop(&a) != SUCCESS) || (stack_pop(&b) != SUCCESS)) {
+   if ((stack_pop(&a) == STACK_UNDERFLOW) || (stack_pop(&b) == STACK_UNDERFLOW)) {
       handle_error("Stack Underflow");
       return;
    }
 
-   if ((stack_push(b) != SUCCESS) || (stack_push(a) != SUCCESS)) {
+   if ((stack_push(b) == STACK_OVERFLOW) || (stack_push(a) == STACK_OVERFLOW)) {
       handle_error("Stack Overflow");
       return;
    }
 }
 
 int add(int left, int right, int* result) {
-   long large_result = left + right;
-
-   if ((large_result > INT32_MAX) || (large_result < INT32_MIN)) {
+   if (((left > 0) && (right > 0) && ((INT32_MAX - left) < right)) ||
+       ((left < 0) && (right < 0) && ((INT32_MIN - left) > right))) {
       return -1;
    }
 
-   *result = large_result;
+   *result = left + right;
    return SUCCESS;
 }
 
 int sub(int left, int right, int* result) {
-   long large_result = left - right;
-
-   if ((large_result > INT32_MAX) || (large_result < INT32_MIN)) {
+   if (((left > 0) && (right < 0) && ((INT32_MAX - left) < -right)) ||
+       ((left < 0) && (right > 0) && ((INT32_MIN - left) > -right))) {
       return -1;
    }
 
-   *result = large_result;
+   *result = left - right;
    return SUCCESS;
 }
 
 int mul(int left, int right, int* result) {
-   long large_result = left * right;
-
-   if ((large_result > INT32_MAX) || (large_result < INT32_MIN)) {
+   if (((left > 0) && (right > 0) && ((INT32_MAX / left) < right)) ||
+       ((left < 0) && (right < 0) && ((INT32_MAX / left) > right)) ||
+       ((left < 0) && (right > 0) && ((INT32_MIN / left) < right)) ||
+       ((left > 0) && (right < 0) && ((INT32_MIN / left) > right))) {
       return -1;
    }
 
-   *result = large_result;
+   *result = left * right;
    return SUCCESS;
 }
 
@@ -194,13 +193,7 @@ int div(int left, int right, int* result) {
       return -1;
    }
 
-   long large_result = left / right;
-
-   if ((large_result > INT32_MAX) || (large_result < INT32_MIN)) {
-      return -1;
-   }
-
-   *result = large_result;
+   *result = left / right;
    return SUCCESS;
 }
 
@@ -208,7 +201,7 @@ void token_op(int (*func)(int, int, int*)) {
    int left = 0;
    int right = 0;
 
-   if ((stack_pop(&right) != SUCCESS) || (stack_pop(&left) != SUCCESS)) {
+   if ((stack_pop(&right) == STACK_UNDERFLOW) || (stack_pop(&left) == STACK_UNDERFLOW)) {
       handle_error("Stack Underflow");
       return;
    }
@@ -220,14 +213,14 @@ void token_op(int (*func)(int, int, int*)) {
       return;
    }
 
-   if (stack_push(result) != SUCCESS) {
+   if (stack_push(result) == STACK_OVERFLOW) {
       handle_error("Stack Overflow");
       return;
    }
 }
 
 void token_number(int value) {
-   if (stack_push(value) != SUCCESS) {
+   if (stack_push(value) == STACK_OVERFLOW) {
       handle_error("Stack Overflow");
       return;
    }
