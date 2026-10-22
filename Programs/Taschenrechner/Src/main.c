@@ -28,6 +28,7 @@ static Terminal terminal;
 static bool error_state;
 
 #define BUFFER_SIZE 32
+#define TESTING true
 
 void print_err(char* message) {
    setTextColorTerm(RED, &terminal);
@@ -48,21 +49,21 @@ void print_num(int num) {
    printTerm(buf, &terminal);
 }
 
-void token_unknown(int _) {
+void token_unknown() {
    handle_error("Unknown Input");
 }
 
-void token_overflow(int _) { // Never sent by scanner
+void token_overflow() { // Never sent by scanner
    handle_error("Input overflow");
 }
 
-void token_unexpected(int value) {
+void token_unexpected() {
    handle_error("Unexpected Input");
 }
 
-void token_enter(int value) {} // Never sent by scanner
+void token_enter() {} // Never sent by scanner
 
-void token_double(int value) {
+void token_double() {
    int stack_ptr = 0;
 
    stack_get_ptr(&stack_ptr);
@@ -92,11 +93,11 @@ void reset() {
    error_state = false;
 }
 
-void token_clear(int value) {
+void token_clear() {
    reset();
 }
 
-void token_prt_all(int value) { // TODO: only print 3 in reverse order
+void token_prt_all() { // TODO: only print 3 in reverse order
    int stack_ptr = -1;
    
    stack_get_ptr(&stack_ptr);
@@ -123,7 +124,7 @@ void token_prt_all(int value) { // TODO: only print 3 in reverse order
    }
 }
 
-void token_prt(int value) {
+void token_prt() {
    int stack_ptr = 0;
 
    stack_get_ptr(&stack_ptr);
@@ -144,16 +145,16 @@ void token_prt(int value) {
    print_num(stack_val);
 }
 
-void token_swap(int value) {
-   int a = 0; // NOLINT
-   int b = 0; // NOLINT
+void token_swap() {
+   int first = 0;
+   int second = 0;
 
-   if ((stack_pop(&a) == STACK_UNDERFLOW) || (stack_pop(&b) == STACK_UNDERFLOW)) {
+   if ((stack_pop(&first) == STACK_UNDERFLOW) || (stack_pop(&second) == STACK_UNDERFLOW)) {
       handle_error("Stack Underflow");
       return;
    }
 
-   if ((stack_push(b) == STACK_OVERFLOW) || (stack_push(a) == STACK_OVERFLOW)) {
+   if ((stack_push(second) == STACK_OVERFLOW) || (stack_push(first) == STACK_OVERFLOW)) {
       handle_error("Stack Overflow");
       return;
    }
@@ -192,7 +193,11 @@ int mul(int left, int right, int* result) {
 }
 
 int div(int left, int right, int* result) {
-   if (result == 0) {
+   if (right == 0) {
+      return -1;
+   }
+
+   if ((left == INT32_MIN) && (right == -1)) {
       return -1;
    }
 
@@ -229,6 +234,237 @@ void token_number(int value) {
    }
 }
 
+void handle_token(T_token token) {
+   int value = token.val;
+
+   if (error_state && (token.tok != CLEAR)) {
+      return;
+   }
+
+   switch (token.tok) {
+      case NUMBER:
+         token_number(value);
+         break;
+      case PLUS:
+         token_op(add);
+         break;
+      case MINUS:
+         token_op(sub);
+         break;
+      case MULT:
+         token_op(mul);
+         break;
+      case DIV:
+         token_op(div);
+         break;
+      case PRT:
+         token_prt();
+         break;
+      case SWAP:
+         token_swap();
+         break;
+      case PRT_ALL:
+         token_prt_all();
+         break;
+      case CLEAR:
+         token_clear();
+         break;
+      case DOUBLE:
+         token_double();
+         break;
+      case ENTER:
+         token_enter();
+         break;
+      case UNEXPECTED:
+         token_unexpected();
+         break;
+      case OVERFLOW:
+         token_overflow();
+         break;
+      default:
+         token_unknown();
+         break;
+   }
+}
+
+void run_test() {
+   // NOLINTBEGIN(readability-magic-numbers)
+   int value;
+   T_token token;
+
+   token.tok = 'n';
+   token.val = 3;
+   handle_token(token);
+   stack_get(0, &value);
+   if (value != 3) {
+      printTerm("Failed stack push test\n", &terminal);
+      return;
+   }
+
+   token.val = 5;
+   handle_token(token);
+   token.tok = '*';
+   handle_token(token);
+   stack_get(0, &value);
+   if (value != 15) {
+      printTerm("Failed mul test\n", &terminal);
+      return;
+   }
+
+   token.tok = 'd';
+   for (int i=0; i<10; i++) {
+      handle_token(token);
+   }
+   if (error_state != true) {
+      printTerm("Failed error test 1\n", &terminal);
+      return;
+   }
+
+   token.tok = 'C';
+   handle_token(token);
+   if (error_state != false) {
+      printTerm("Failed error test 2\n", &terminal);
+      return;
+   }
+
+   token.tok = 'n';
+   token.val = 0;
+   handle_token(token);
+   token.val = 1024;
+   for (int i=0; i<3; i++) {
+      handle_token(token);
+   }
+   token.val = 0;
+   handle_token(token);
+   token.val = 2;
+   handle_token(token);
+   token.tok = '-';
+   handle_token(token);
+   token.tok = '*';
+   for (int i=0; i<3; i++) {
+      handle_token(token);
+   }
+   token.tok = '-';
+   handle_token(token);
+   if (error_state != false) {
+      printTerm("Failed error test 3\n", &terminal);
+      return;
+   }
+
+   token.tok = 'n';
+   token.val = 0;
+   handle_token(token);
+   token.val = 1024;
+   for (int i=0; i<3; i++) {
+      handle_token(token);
+   }
+   token.val = 0;
+   handle_token(token);
+   token.val = 2;
+   handle_token(token);
+   token.tok = '-';
+   handle_token(token);
+   token.tok = '*';
+   for (int i=0; i<3; i++) {
+      handle_token(token);
+   }
+   token.tok = 'n';
+   token.val = 0;
+   handle_token(token);
+   token.val = 1;
+   handle_token(token);
+   token.tok = '-';
+   handle_token(token);
+   token.tok = '*';
+   handle_token(token);
+   token.tok = '-';
+   handle_token(token);
+   if (error_state != true) {
+      printTerm("Failed error test 4\n", &terminal);
+      return;
+   }
+
+   token.tok = 'C';
+   handle_token(token);
+
+   token.tok = 'n';
+   token.val = 5;
+   handle_token(token);
+   token.val = 0;
+   handle_token(token);
+   token.tok = '/';
+   handle_token(token);
+   if (error_state != true) {
+      printTerm("Failed error test 5\n", &terminal);
+      return;
+   }
+
+   token.tok = 'C';
+   handle_token(token);
+
+   token.tok = 'O';
+   handle_token(token);
+   if (error_state != true) {
+      printTerm("Failed error test 6\n", &terminal);
+      return;
+   }
+
+   token.tok = 'C';
+   handle_token(token);
+
+   token.tok = '-';
+   handle_token(token);
+   if (error_state != true) {
+      printTerm("Failed error test 7\n", &terminal);
+      return;
+   }
+
+   token.tok = 'C';
+   handle_token(token);
+
+   token.tok = 'n';
+   token.val = 20;
+   handle_token(token);
+   token.val = 7;
+   handle_token(token);
+   token.tok = '-';
+   handle_token(token);
+   stack_get(0, &value);
+   if (value != 13) {
+      printTerm("Failed sub test\n", &terminal);
+      return;
+   }
+
+   token.tok = 'n';
+   token.val = 20;
+   handle_token(token);
+   token.val = 7;
+   handle_token(token);
+   token.tok = '+';
+   handle_token(token);
+   stack_get(1, &value);
+   if (value != 27) {
+      printTerm("Failed add test\n", &terminal);
+      return;
+   }
+
+   token.tok = 'n';
+   token.val = 20;
+   handle_token(token);
+   token.val = 7;
+   handle_token(token);
+   token.tok = '/';
+   handle_token(token);
+   stack_get(2, &value);
+   if (value != 2) {
+      printTerm("Failed div test\n", &terminal);
+      return;
+   }
+
+   printTerm("All tests passed\n", &terminal);
+   // NOLINTEND(readability-magic-numbers)
+}
+
 int main(void) {
    initITSboard(); // Initialisierung des ITS Boards
    
@@ -236,58 +472,15 @@ int main(void) {
    terminal = makeKeyPad();
    error_state = false;
 
+   if (TESTING) {
+      run_test();
+      printTerm("Press C to continue", &terminal);
+      error_state = true;
+   }
+
    while (1) {
-      T_token token = next_token(); 
-      int value = token.val;
-
-      if (error_state && (token.tok != CLEAR)) {
-         continue;
-      }
-
-      switch (token.tok) {
-         case NUMBER:
-            token_number(value);
-            break;
-         case PLUS:
-            token_op(add);
-            break;
-         case MINUS:
-            token_op(sub);
-            break;
-         case MULT:
-            token_op(mul);
-            break;
-         case DIV:
-            token_op(div);
-            break;
-         case PRT:
-            token_prt(value);
-            break;
-         case SWAP:
-            token_swap(value);
-            break;
-         case PRT_ALL:
-            token_prt_all(value);
-            break;
-         case CLEAR:
-            token_clear(value);
-            break;
-         case DOUBLE:
-            token_double(value);
-            break;
-         case ENTER:
-            token_enter(value);
-            break;
-         case UNEXPECTED:
-            token_unexpected(value);
-            break;
-         case OVERFLOW:
-            token_overflow(value);
-            break;
-         default:
-            token_unknown(value);
-            break;
-      }
+      T_token token = next_token();
+      handle_token(token);
    }
 }
 
