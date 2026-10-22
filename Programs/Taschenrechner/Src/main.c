@@ -108,6 +108,8 @@ void token_prt_all(int value) { // TODO: only print 3 in reverse order
 
    int min = (stack_ptr > 2) ? (stack_ptr - 2) : 0;
 
+   clearTerm(&terminal);
+
    for (int i=min; i<=stack_ptr; i++) {
       int value = 0;
 
@@ -138,6 +140,7 @@ void token_prt(int value) {
       return;
    }
 
+   clearTerm(&terminal);
    print_num(stack_val);
 }
 
@@ -228,9 +231,6 @@ void token_number(int value) {
 
 int main(void) {
    initITSboard(); // Initialisierung des ITS Boards
-
-   GUI_init(DEFAULT_BRIGHTNESS); // Initialisierung des LCD Boards mit Touch
-   TP_Init(false); // Initialisierung des LCD Boards mit Touch
    
    init_display();
    terminal = makeKeyPad();

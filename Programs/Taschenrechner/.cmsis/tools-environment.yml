@@ -4,23 +4,23 @@ cmsis-tools-environment:
   solution: ../Taschenrechner.csolution.yml
   environment:
     path:
-      - /home/jan/.vscode-oss/extensions/arm.vscode-cmsis-debugger-1.10.0-linux-x64/tools/pyocd
-      - /home/jan/.vscode-oss/extensions/arm.cmsis-csolution-1.72.0-linux-x64/tools/cmsis-toolbox/bin
-      - /home/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin
-      - /home/jan/.vcpkg/artifacts/2139c4c6/tools.ninja.build.ninja/1.13.2
-      - /home/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin
-      - /home/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.arm.none.eabi.gcc/13.3.1/bin
-      - /home/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.llvm.embedded/17.0.1/bin
-      - /home/jan/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.11.0/bin
-      - /home/jan/.vscode-oss/extensions/arm.vscode-cmsis-debugger-1.10.0-linux-x64/tools/gdb/bin
+      - /Users/jan/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.0-darwin-arm64/tools/pyocd
+      - /Users/jan/.vscode/extensions/arm.cmsis-csolution-1.72.0-darwin-arm64/tools/cmsis-toolbox/bin
+      - /Users/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin
+      - /Users/jan/.vcpkg/artifacts/2139c4c6/tools.ninja.build.ninja/1.13.2
+      - /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin
+      - /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.arm.none.eabi.gcc/13.3.1/bin
+      - /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.llvm.embedded/17.0.1/bin
+      - /Users/jan/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.10.1/bin
+      - /Users/jan/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.0-darwin-arm64/tools/gdb/bin
     variables:
-      cmake: /home/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake
-      cmake_gui: /home/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake-gui
-      ctest: /home/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/ctest
-      ninja: /home/jan/.vcpkg/artifacts/2139c4c6/tools.ninja.build.ninja/1.13.2/ninja
-      AC6_TOOLCHAIN_6_24_0: /home/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/
-      GCC_TOOLCHAIN_13_3_1: /home/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.arm.none.eabi.gcc/13.3.1/bin
-      CLANG_TOOLCHAIN_17_0_1: /home/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.llvm.embedded/17.0.1/bin/
+      cmake: /Users/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake
+      cmake_gui: /Users/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake-gui
+      ctest: /Users/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/ctest
+      ninja: /Users/jan/.vcpkg/artifacts/2139c4c6/tools.ninja.build.ninja/1.13.2/ninja
+      AC6_TOOLCHAIN_6_24_0: /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin/
+      GCC_TOOLCHAIN_13_3_1: /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.arm.none.eabi.gcc/13.3.1/bin
+      CLANG_TOOLCHAIN_17_0_1: /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.llvm.embedded/17.0.1/bin/
   tools:
     - name: pyOCD
       version: 0.46.0
@@ -28,7 +28,7 @@ cmsis-tools-environment:
       provider:
         type: vscode-extension
         id: arm.vscode-cmsis-debugger
-      directory: /home/jan/.vscode-oss/extensions/arm.vscode-cmsis-debugger-1.10.0-linux-x64/tools/pyocd
+      directory: /Users/jan/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.0-darwin-arm64/tools/pyocd
       manual: https://pyocd.io/docs/
     - name: CMSIS-Toolbox
       version: 2.15.0
@@ -36,7 +36,7 @@ cmsis-tools-environment:
       provider:
         type: vscode-extension
         id: arm.cmsis-csolution
-      directory: /home/jan/.vscode-oss/extensions/arm.cmsis-csolution-1.72.0-linux-x64/tools/cmsis-toolbox/bin
+      directory: /Users/jan/.vscode/extensions/arm.cmsis-csolution-1.72.0-darwin-arm64/tools/cmsis-toolbox/bin
       manual: https://open-cmsis-pack.github.io/cmsis-toolbox/
     - name: tools.kitware.cmake
       version: 3.28.4
@@ -44,47 +44,47 @@ cmsis-tools-environment:
       provider:
         type: vcpkg
         id: arm.environment-manager
-      directory: /home/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4
+      directory: /Users/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4
     - name: tools.ninja.build.ninja
       version: 1.13.2
       origin: installed
       provider:
         type: vcpkg
         id: arm.environment-manager
-      directory: /home/jan/.vcpkg/artifacts/2139c4c6/tools.ninja.build.ninja/1.13.2
+      directory: /Users/jan/.vcpkg/artifacts/2139c4c6/tools.ninja.build.ninja/1.13.2
     - name: compilers.arm.armclang
       version: 6.24.0
       origin: installed
       provider:
         type: vcpkg
         id: arm.environment-manager
-      directory: /home/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0
+      directory: /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0
     - name: compilers.arm.arm.none.eabi.gcc
       version: 13.3.1
       origin: installed
       provider:
         type: vcpkg
         id: arm.environment-manager
-      directory: /home/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.arm.none.eabi.gcc/13.3.1
+      directory: /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.arm.none.eabi.gcc/13.3.1
     - name: compilers.arm.llvm.embedded
       version: 17.0.1
       origin: installed
       provider:
         type: vcpkg
         id: arm.environment-manager
-      directory: /home/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.llvm.embedded/17.0.1
+      directory: /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.llvm.embedded/17.0.1
     - name: debuggers.arm.armdbg
-      version: 6.11.0
+      version: 6.10.1
       origin: installed
       provider:
         type: vcpkg
         id: arm.environment-manager
-      directory: /home/jan/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.11.0
+      directory: /Users/jan/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.10.1
     - name: Arm GNU GDB
       version: 15.3.1
       origin: built-in
       provider:
         type: vscode-extension
         id: arm.vscode-cmsis-debugger
-      directory: /home/jan/.vscode-oss/extensions/arm.vscode-cmsis-debugger-1.10.0-linux-x64/tools/gdb/bin
+      directory: /Users/jan/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.0-darwin-arm64/tools/gdb/bin
       manual: https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain
