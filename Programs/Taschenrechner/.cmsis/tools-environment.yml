@@ -6,13 +6,13 @@ cmsis-tools-environment:
     path:
       - /Users/jan/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.0-darwin-arm64/tools/pyocd
       - /Users/jan/.vscode/extensions/arm.cmsis-csolution-1.72.0-darwin-arm64/tools/cmsis-toolbox/bin
+      - /Users/jan/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.0-darwin-arm64/tools/gdb/bin
       - /Users/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin
       - /Users/jan/.vcpkg/artifacts/2139c4c6/tools.ninja.build.ninja/1.13.2
       - /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.armclang/6.24.0/bin
       - /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.arm.none.eabi.gcc/13.3.1/bin
       - /Users/jan/.vcpkg/artifacts/2139c4c6/compilers.arm.llvm.embedded/17.0.1/bin
       - /Users/jan/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.10.1/bin
-      - /Users/jan/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.0-darwin-arm64/tools/gdb/bin
     variables:
       cmake: /Users/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake
       cmake_gui: /Users/jan/.vcpkg/artifacts/2139c4c6/tools.kitware.cmake/3.28.4/bin/cmake-gui
@@ -38,6 +38,14 @@ cmsis-tools-environment:
         id: arm.cmsis-csolution
       directory: /Users/jan/.vscode/extensions/arm.cmsis-csolution-1.72.0-darwin-arm64/tools/cmsis-toolbox/bin
       manual: https://open-cmsis-pack.github.io/cmsis-toolbox/
+    - name: Arm GNU GDB
+      version: 15.3.1
+      origin: built-in
+      provider:
+        type: vscode-extension
+        id: arm.vscode-cmsis-debugger
+      directory: /Users/jan/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.0-darwin-arm64/tools/gdb/bin
+      manual: https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain
     - name: tools.kitware.cmake
       version: 3.28.4
       origin: installed
@@ -80,11 +88,3 @@ cmsis-tools-environment:
         type: vcpkg
         id: arm.environment-manager
       directory: /Users/jan/.vcpkg/artifacts/2139c4c6/debuggers.arm.armdbg/6.10.1
-    - name: Arm GNU GDB
-      version: 15.3.1
-      origin: built-in
-      provider:
-        type: vscode-extension
-        id: arm.vscode-cmsis-debugger
-      directory: /Users/jan/.vscode/extensions/arm.vscode-cmsis-debugger-1.10.0-darwin-arm64/tools/gdb/bin
-      manual: https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain
