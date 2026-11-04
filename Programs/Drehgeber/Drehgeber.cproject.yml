@@ -180,7 +180,9 @@ project:
     - group: Program/User/Src
       files:
         - file: Src/main.c
-
-
+        - file: Src/calc.c
+        - file: Src/phase.c
+        - file: Src/gpio.c
+        
   components:
     - component: ARM::CMSIS:CORE
