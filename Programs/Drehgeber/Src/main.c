@@ -9,9 +9,13 @@
 
 #include "LCD_GUI.h"
 #include "LCD_Touch.h"
+#include "gpio.h"
 #include "init.h"
 #include "lcd.h"
 #include "stm32f4xx_hal.h"
+#include "timer.h"
+#include <stddef.h>
+#include "main.h"
 
 int main(void) {
    initITSboard(); // Initialisierung des ITS Boards
@@ -21,6 +25,8 @@ int main(void) {
 
    // Begruessungstext
    lcdPrintlnS("Hallo liebes TI-Labor (c-project)");
+
+   initTimer();
 
    // Test in Endlosschleife
    const int POLL_DELAY = 10000;
