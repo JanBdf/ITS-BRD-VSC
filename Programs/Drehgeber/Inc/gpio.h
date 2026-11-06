@@ -3,8 +3,9 @@
 
 #include <stdbool.h>
 
-void read_phase(char* phase);
-void read_button(unsigned int index, bool* value);
+char read_phase();
+bool read_button(unsigned int index);
 void set_led(unsigned int index, bool value);
+void display_binary(unsigned int value);
 
 #endif // ifndef GPIO_H

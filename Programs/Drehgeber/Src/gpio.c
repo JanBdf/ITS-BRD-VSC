@@ -7,22 +7,20 @@
 #define BUTTON_PORT_WIDTH 8
 #define LED_PORT_WIDTH 8
 #define BSRR_RESET_OFFSET 16
+#define BINARY_OUTPUT_MADK 0xFFU
 
 static char phases[] = {'a', 'd', 'b', 'c'};
 
-void read_phase(char* phase) {
+char read_phase() {
     int value = GPIOF->IDR & 3;
-    *phase = phases[value];    
+    return phases[value];    
 }
 
-void read_button(unsigned int index, bool* value) {
-    assert(index < BUTTON_PORT_WIDTH);
-    *value = (GPIOF->IDR >> index) & 1;
+bool read_button(unsigned int index) {
+    return (GPIOF->IDR >> index) & 1;
 }
 
 void set_led(unsigned int index, bool value) {
-    assert(index < (LED_PORT_WIDTH * 2));
-
     volatile uint32_t* bsrr_ptr;
 
     if (index >= LED_PORT_WIDTH) {
@@ -37,4 +35,8 @@ void set_led(unsigned int index, bool value) {
     }
 
     *bsrr_ptr = 1 << index;
+}
+
+void display_binary(unsigned int value) {
+    GPIOD->BSRR = value & BINARY_OUTPUT_MADK;
 }

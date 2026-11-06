@@ -180,6 +180,8 @@ project:
     - group: Program/User/Src
       files:
         - file: Src/main.c
+        - file: Src/gpio.c
+        - file: Src/phase.c
 
 
   components:
