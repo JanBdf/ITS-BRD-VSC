@@ -11,20 +11,13 @@ typedef void (*state_func)(void);
 static void poll_phase(phase_t* phase);
 static void state_forward();
 static void state_backward();
-static void state_init();
 static void state_error();
 static void state_none();
 
 #define F state_forward
 #define B state_backward
-#define I state_init
 #define E state_error
 #define N state_none
-
-static bool error_state = false;
-static direction_t direction = UNKNOWN;
-static int counter = 0;
-static phase_t last_phase = {0};
 
 static state_func states[4][4] = {
     //       a      b      c      d
@@ -34,8 +27,18 @@ static state_func states[4][4] = {
     {F, E, B, N}, // d
 };
 
+#undef F
+#undef B
+#undef E
+#undef N
+
+static bool error_state = false;
+static direction_t direction = UNKNOWN;
+static int counter = 0;
+static phase_t last_phase = {0};
+
 static void poll_phase(phase_t* phase) {
-    read_phase(&phase->phase);
+    phase->phase = read_phase();
     phase->timestamp = getTimeStamp();
 }
 
@@ -51,11 +54,6 @@ static void state_backward() {
     direction = BACKWARD;
 }
 
-static void state_init() {
-    error_state = false;
-    direction = UNKNOWN;
-}
-
 static void state_error() {
     error_state = true;
 }
@@ -66,7 +64,7 @@ void run_state() {
     state_func func;
 
     if (last_phase.phase == 0) { // TODO: Improve error handling
-        func = state_init;
+        func = state_none;
     } else {
         int old_state_index = last_phase.phase - 'a';
         int new_state_index = new_phase.phase - 'a';
@@ -83,9 +81,8 @@ int get_counter() {
     return counter;
 }
 
-int get_timestamp(uint32_t* value) {
-    *value = last_phase.timestamp;
-    return SUCCESS;
+uint32_t get_timestamp() {
+    return last_phase.timestamp;
 }
 
 bool get_error_state() {
@@ -97,5 +94,7 @@ direction_t get_direction() {
 }
 
 void reset_state() {
+    error_state = false;
+    direction = UNKNOWN;
     last_phase.phase = 0;
 }

@@ -17,7 +17,7 @@ typedef struct {
 
 void run_state();
 int get_counter();
-int get_timestamp(uint32_t* value);
+uint32_t get_timestamp();
 bool get_error_state();
 direction_t get_direction();
 void reset_state();
