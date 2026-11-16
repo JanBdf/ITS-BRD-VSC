@@ -36,6 +36,7 @@ static bool error_state = false;
 static direction_t direction = UNKNOWN;
 static int counter = 0;
 static phase_t last_phase = {0};
+static uint32_t phase_change_timestamp;
 
 static void poll_phase(phase_t* phase) {
     phase->phase = read_phase();
@@ -63,6 +64,10 @@ void run_state() {
     poll_phase(&new_phase);
     state_func func;
 
+    if (new_phase.phase != last_phase.phase) {
+        phase_change_timestamp = new_phase.timestamp;
+    }
+
     if (last_phase.phase == 0) { // TODO: Improve error handling
         func = state_none;
     } else {
@@ -82,7 +87,7 @@ int get_counter() {
 }
 
 uint32_t get_timestamp() {
-    return last_phase.timestamp;
+    return phase_change_timestamp;
 }
 
 bool get_error_state() {
@@ -97,4 +102,6 @@ void reset_state() {
     error_state = false;
     direction = UNKNOWN;
     last_phase.phase = 0;
+    phase_change_timestamp = getTimeStamp();
+    counter = 0;
 }

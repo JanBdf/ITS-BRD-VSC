@@ -7,7 +7,7 @@
 #define BUTTON_PORT_WIDTH 8
 #define LED_PORT_WIDTH 8
 #define BSRR_RESET_OFFSET 16
-#define BINARY_OUTPUT_MADK 0xFFU
+#define BINARY_OUTPUT_MASK 0xFFU
 
 static char phases[] = {'a', 'd', 'b', 'c'};
 
@@ -38,5 +38,7 @@ void set_led(unsigned int index, bool value) {
 }
 
 void display_binary(unsigned int value) {
-    GPIOD->BSRR = value & BINARY_OUTPUT_MADK;
+    uint32_t combined = value & BINARY_OUTPUT_MASK;
+    combined |= (~value & BINARY_OUTPUT_MASK) << BSRR_RESET_OFFSET;
+    GPIOD->BSRR = combined;
 }
