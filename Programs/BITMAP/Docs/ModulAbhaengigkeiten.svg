@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2130" height="2130" viewBox="0 -20 2130 2130" font-family="Menlo, Consolas, DejaVu Sans Mono, monospace">
+<defs><marker id="arrOpen" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="strokeWidth"><path d="M0.5,0.5 L8.5,4.5 L0.5,8.5" fill="none" stroke="#555" stroke-width="1.2"/></marker><marker id="arrTri" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="strokeWidth"><path d="M0.5,0.5 L8.5,4.5 L0.5,8.5 Z" fill="none" stroke="#555" stroke-width="1.2"/></marker></defs>
+<rect y="-20" width="2130" height="2130" fill="#fafafa"/>
+<text x="1065" y="12" text-anchor="middle" font-size="20" font-weight="bold" fill="#111">BITMAP_Starthilfe (NUCLEO-F429ZI) – Modulabhängigkeiten</text>
+<text x="130" y="1836" font-size="12" fill="#444">analog Klassendiagramm: Modul = Klasse (Dateien + Operationen), gestrichelter Pfeil = UML-Dependency «include / uses»</text>
+<text x="130" y="1854" font-size="11" fill="#666">blau = Transportschicht (byte_io-Dispatcher), gruen = USB-Stack, gelb = Infrastruktur/Typen; externe Pakete als ext:-Zeile im Kasten (Legende unten)</text>
+<rect x="130" y="1650" width="430" height="84" rx="6" fill="#fff" stroke="#ccc"/>
+<line x1="142" y1="1668" x2="182" y2="1668" stroke="#555" stroke-width="1.4" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/><text x="190" y="1672" font-size="10.5" fill="#333">Dependency «include/uses» zwischen Projekt-Modulen</text>
+<line x1="142" y1="1686" x2="182" y2="1686" stroke="#555" stroke-width="1.4" stroke-dasharray="5,3" marker-end="url(#arrTri)"/><text x="190" y="1690" font-size="10.5" fill="#333">hohle Dreiecksspitze = Implementation eines Interfaces</text>
+<text x="142" y="1708" font-size="10.5" fill="#777" font-style="italic">graue Kursivzeile im Kasten = Dateien des Moduls</text>
+<text x="142" y="1725" font-size="10.5" fill="#b91c1c" font-style="italic">rote Kursivzeile im Kasten = ext:-Verweis auf externes Paket</text>
+<path d="M873,207 V237 H687 V337" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M715,160 H468" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M1045,160 H1067" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M1045,190 H1060 V290 H1400 V331" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M300,228 V280 H600 V331" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M122,180 H60 V750 H122" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M122,150 H100 V35 H1750 V380 H1668" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M250,228 V660 H1095 V678" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M688,554 V610 H1895 V684" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M695,548 V580 H1495 V473" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M688,554 V636 H1495 V684" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M200,678 V500 H522" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M288,811 V841 H1700 V408 H1668" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M295,805 V830 H1095 V805" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M1888,841 V897 H703 V971" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M1730,740 H1668" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M460,1042 H522" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrTri)"/>
+<path d="M930,1042 H868" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrTri)"/>
+<path d="M695,1195 V1243" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M340,1195 V1243" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M288,1113 V1195 H1495 V1243" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M1330,1299 H1268" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M1495,1355 V1485" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M1260,1320 H1322" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M930,1320 H868" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M1495,1597 V1727" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<path d="M930,740 H868" fill="none" stroke="#555" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrOpen)"/>
+<rect x="715" y="110" width="330" height="97" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4"/>
+<text x="725" y="129" font-size="13" font-weight="bold" fill="#111">main</text>
+<text x="725" y="144" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; Starthilfe (Rahmenprogramm)</text>
+<text x="725" y="159" font-size="10.5" fill="#777" font-style="italic">Src/main.c</text>
+<text x="725" y="176" font-size="10.5" fill="#111">+main()</text>
+<text x="725" y="193" font-size="10" fill="#b91c1c" font-style="italic">ext: ITS_BRD_LIB, DisplayWaveshare</text>
+<rect x="130" y="110" width="330" height="112" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4"/>
+<text x="140" y="129" font-size="13" font-weight="bold" fill="#111">fileHeader</text>
+<text x="140" y="144" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; Einstiegsfunktion Input (vorgegeben)</text>
+<text x="140" y="159" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/fileHeader.c</text>
+<text x="140" y="174" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/fileHeader.h</text>
+<text x="140" y="191" font-size="10.5" fill="#111">+input_file_header() int</text>
+<text x="140" y="208" font-size="10" fill="#b91c1c" font-style="italic">ext: ITS_BRD_LIB, DisplayWaveshare, STM32CubeF4</text>
+<rect x="530" y="337" width="330" height="217" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4"/>
+<text x="540" y="356" font-size="13" font-weight="bold" fill="#111">input</text>
+<text x="540" y="371" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; Protokoll-/Dateischicht (vorgegeben)</text>
+<text x="540" y="386" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/input.c</text>
+<text x="540" y="401" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/input.h</text>
+<text x="540" y="418" font-size="10.5" fill="#111">+ask_transport() transport_t</text>
+<text x="540" y="433" font-size="10.5" fill="#111">+show_s5_hint()</text>
+<text x="540" y="448" font-size="10.5" fill="#111">+wait_for_s_i(btn)</text>
+<text x="540" y="463" font-size="10.5" fill="#111">+init_input(transport_t)</text>
+<text x="540" y="478" font-size="10.5" fill="#111">+open_nxt_file()</text>
+<text x="540" y="493" font-size="10.5" fill="#111">+nxt_chr() int</text>
+<text x="540" y="508" font-size="10.5" fill="#111">+read_file(buf,size,count) int</text>
+<text x="540" y="523" font-size="10.5" fill="#111">+eof() bool</text>
+<text x="540" y="540" font-size="10" fill="#b91c1c" font-style="italic">ext: ITS_BRD_LIB, STM32CubeF4</text>
+<rect x="1075" y="110" width="330" height="112" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4"/>
+<text x="1085" y="129" font-size="13" font-weight="bold" fill="#111">usb_clock_config</text>
+<text x="1085" y="144" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt;</text>
+<text x="1085" y="159" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/usb_clock_config.c</text>
+<text x="1085" y="174" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/usb_clock_config.h</text>
+<text x="1085" y="191" font-size="10.5" fill="#111">+switch_to_168_MHz()</text>
+<text x="1085" y="208" font-size="10" fill="#b91c1c" font-style="italic">ext: STM32CubeF4, ITS_BRD_LIB</text>
+<rect x="1330" y="337" width="330" height="142" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/>
+<text x="1340" y="356" font-size="13" font-weight="bold" fill="#111">errorhandler</text>
+<text x="1340" y="371" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt;</text>
+<text x="1340" y="386" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/errorhandler.c</text>
+<text x="1340" y="401" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/errorhandler.h</text>
+<text x="1340" y="418" font-size="10.5" fill="#111">+my_err_handler(...) int</text>
+<text x="1340" y="433" font-size="10.5" fill="#111">CHECK / CHECK_FATAL</text>
+<text x="1340" y="448" font-size="10.5" fill="#111">CHECK_OR_RETURN / RETURN_ON_ERROR</text>
+<text x="1340" y="465" font-size="10" fill="#b91c1c" font-style="italic">ext: ITS_BRD_LIB</text>
+<rect x="130" y="684" width="330" height="127" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4"/>
+<text x="140" y="703" font-size="13" font-weight="bold" fill="#111">headers</text>
+<text x="140" y="718" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; Header einlesen + pruefen (vorgegeben)</text>
+<text x="140" y="733" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/headers.c</text>
+<text x="140" y="748" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/headers.h</text>
+<text x="140" y="765" font-size="10.5" fill="#111">+read_hdrs() int</text>
+<text x="140" y="780" font-size="10.5" fill="#111">+get_file_hdr(p)</text>
+<text x="140" y="795" font-size="10.5" fill="#111">+get_info_hdr(p)</text>
+<rect x="930" y="684" width="330" height="127" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/>
+<text x="940" y="703" font-size="13" font-weight="bold" fill="#111">BMP_types</text>
+<text x="940" y="718" font-size="10" fill="#555" font-style="italic">&lt;&lt;datatype&gt;&gt;</text>
+<text x="940" y="733" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/BMP_types.h</text>
+<text x="940" y="750" font-size="10.5" fill="#111">BITMAPFILEHEADER / BITMAPINFOHEADER</text>
+<text x="940" y="765" font-size="10.5" fill="#111">RGBQUAD / RGBTRIPLE</text>
+<text x="940" y="780" font-size="10.5" fill="#111">BI_RGB, BI_RLE8, BMP_SIGNATURE</text>
+<text x="940" y="797" font-size="10" fill="#b91c1c" font-style="italic">ext: CMSIS/libc</text>
+<rect x="1730" y="684" width="330" height="157" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+<text x="1740" y="703" font-size="13" font-weight="bold" fill="#111">byte_io</text>
+<text x="1740" y="718" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; Dispatcher</text>
+<text x="1740" y="733" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/byte_io.c</text>
+<text x="1740" y="748" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/byte_io.h</text>
+<text x="1740" y="765" font-size="10.5" fill="#111">+byte_io_init(transport_t)</text>
+<text x="1740" y="780" font-size="10.5" fill="#111">+byte_io_transport() transport_t</text>
+<text x="1740" y="795" font-size="10.5" fill="#111">+byte_io_get() uint8_t</text>
+<text x="1740" y="810" font-size="10.5" fill="#111">+byte_io_put(byte)</text>
+<text x="1740" y="825" font-size="10.5" fill="#111">+byte_io_clear()</text>
+<rect x="1330" y="684" width="330" height="112" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/>
+<text x="1340" y="703" font-size="13" font-weight="bold" fill="#111">transport</text>
+<text x="1340" y="718" font-size="10" fill="#555" font-style="italic">&lt;&lt;enumeration&gt;&gt; transport_t</text>
+<text x="1340" y="733" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/transport.h</text>
+<text x="1340" y="750" font-size="10.5" fill="#111">TRANSPORT_USB_CDC</text>
+<text x="1340" y="765" font-size="10.5" fill="#111">TRANSPORT_UART_VIA_USB</text>
+<text x="1340" y="782" font-size="10" fill="#b91c1c" font-style="italic">ext: CMSIS/libc</text>
+<rect x="130" y="971" width="330" height="142" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+<text x="140" y="990" font-size="13" font-weight="bold" fill="#111">byte_io_usb</text>
+<text x="140" y="1005" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; USB-CDC-Backend</text>
+<text x="140" y="1020" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/byte_io_usb.c</text>
+<text x="140" y="1037" font-size="10.5" fill="#111">+byte_io_usb_init()</text>
+<text x="140" y="1052" font-size="10.5" fill="#111">+byte_io_usb_get() uint8_t</text>
+<text x="140" y="1067" font-size="10.5" fill="#111">+byte_io_usb_put(b)</text>
+<text x="140" y="1082" font-size="10.5" fill="#111">+byte_io_usb_clear()</text>
+<text x="140" y="1099" font-size="10" fill="#b91c1c" font-style="italic">ext: STM32CubeF4, ITS_BRD_LIB</text>
+<rect x="530" y="971" width="330" height="112" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+<text x="540" y="990" font-size="13" font-weight="bold" fill="#111">byte_io_backend</text>
+<text x="540" y="1005" font-size="10" fill="#555" font-style="italic">&lt;&lt;interface&gt;&gt;</text>
+<text x="540" y="1020" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/byte_io_backend.h</text>
+<text x="540" y="1037" font-size="10.5" fill="#111">+byte_io_usb_init/get/put/clear()</text>
+<text x="540" y="1052" font-size="10.5" fill="#111">+byte_io_uart_init/get/put/clear()</text>
+<text x="540" y="1069" font-size="10" fill="#b91c1c" font-style="italic">ext: CMSIS/libc</text>
+<rect x="930" y="971" width="330" height="142" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+<text x="940" y="990" font-size="13" font-weight="bold" fill="#111">byte_io_uart</text>
+<text x="940" y="1005" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; UART-via-USB-Backend</text>
+<text x="940" y="1020" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/byte_io_uart.c</text>
+<text x="940" y="1037" font-size="10.5" fill="#111">+byte_io_uart_init()</text>
+<text x="940" y="1052" font-size="10.5" fill="#111">+byte_io_uart_get() uint8_t</text>
+<text x="940" y="1067" font-size="10.5" fill="#111">+byte_io_uart_put(b)</text>
+<text x="940" y="1082" font-size="10.5" fill="#111">+byte_io_uart_clear()</text>
+<text x="940" y="1099" font-size="10" fill="#b91c1c" font-style="italic">ext: STM32CubeF4</text>
+<rect x="530" y="684" width="330" height="97" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/>
+<text x="540" y="703" font-size="13" font-weight="bold" fill="#111">MS_basetypes</text>
+<text x="540" y="718" font-size="10" fill="#555" font-style="italic">&lt;&lt;datatype&gt;&gt;</text>
+<text x="540" y="733" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/MS_basetypes.h</text>
+<text x="540" y="750" font-size="10.5" fill="#111">CHAR SHORT LONG DWORD BOOL BYTE WORD</text>
+<text x="540" y="767" font-size="10" fill="#b91c1c" font-style="italic">ext: CMSIS/libc</text>
+<rect x="530" y="1243" width="330" height="157" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.4"/>
+<text x="540" y="1262" font-size="13" font-weight="bold" fill="#111">cdc_input_if</text>
+<text x="540" y="1277" font-size="10" fill="#555" font-style="italic">&lt;&lt;interface&gt;&gt; CDC-Hooks/-Wrapper</text>
+<text x="540" y="1292" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/cdc_input_if.h</text>
+<text x="540" y="1309" font-size="10.5" fill="#111">+cdc_collect(data,len)</text>
+<text x="540" y="1324" font-size="10.5" fill="#111">+usb_rx_arm_when_space()</text>
+<text x="540" y="1339" font-size="10.5" fill="#111">+cdc_rx_arm() bool</text>
+<text x="540" y="1354" font-size="10.5" fill="#111">+cdc_tx_busy() bool</text>
+<text x="540" y="1369" font-size="10.5" fill="#111">+cdc_transmit(buf,len) uint8_t</text>
+<text x="540" y="1386" font-size="10" fill="#b91c1c" font-style="italic">ext: CMSIS/libc</text>
+<rect x="130" y="1243" width="330" height="187" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+<text x="140" y="1262" font-size="13" font-weight="bold" fill="#111">ringbuf</text>
+<text x="140" y="1277" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; SPSC-Ringpuffer (Singleton)</text>
+<text x="140" y="1292" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/ringbuf.c</text>
+<text x="140" y="1307" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/ringbuf.h</text>
+<text x="140" y="1324" font-size="10.5" fill="#111">+ringbuf_init()</text>
+<text x="140" y="1339" font-size="10.5" fill="#111">+ringbuf_write(data,len) uint32_t</text>
+<text x="140" y="1354" font-size="10.5" fill="#111">+ringbuf_available() uint32_t</text>
+<text x="140" y="1369" font-size="10.5" fill="#111">+ringbuf_free() uint32_t</text>
+<text x="140" y="1384" font-size="10.5" fill="#111">+ringbuf_get(out) bool</text>
+<text x="140" y="1399" font-size="10.5" fill="#111">+ringbuf_flush()</text>
+<text x="140" y="1416" font-size="10" fill="#b91c1c" font-style="italic">ext: CMSIS/libc</text>
+<rect x="1330" y="1243" width="330" height="112" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.4"/>
+<text x="1340" y="1262" font-size="13" font-weight="bold" fill="#111">usb_device</text>
+<text x="1340" y="1277" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt;</text>
+<text x="1340" y="1292" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/usb_device.c</text>
+<text x="1340" y="1307" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/usb_device.h</text>
+<text x="1340" y="1324" font-size="10.5" fill="#111">+usb_device_init()</text>
+<text x="1340" y="1341" font-size="10" fill="#b91c1c" font-style="italic">ext: STM32CubeF4, ITS_BRD_LIB</text>
+<rect x="930" y="1243" width="330" height="112" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.4"/>
+<text x="940" y="1262" font-size="13" font-weight="bold" fill="#111">usbd_cdc_if</text>
+<text x="940" y="1277" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; CDC-Anwendungsadapter</text>
+<text x="940" y="1292" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/usbd_cdc_if.c</text>
+<text x="940" y="1307" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/usbd_cdc_if.h</text>
+<text x="940" y="1324" font-size="10.5" fill="#111">+usbd_interface_fops_fs</text>
+<text x="940" y="1341" font-size="10" fill="#b91c1c" font-style="italic">ext: STM32CubeF4</text>
+<rect x="1330" y="1485" width="330" height="112" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.4"/>
+<text x="1340" y="1504" font-size="13" font-weight="bold" fill="#111">usbd_desc</text>
+<text x="1340" y="1519" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; USB-Deskriptoren</text>
+<text x="1340" y="1534" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/usbd_desc.c</text>
+<text x="1340" y="1549" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/usbd_desc.h</text>
+<text x="1340" y="1566" font-size="10.5" fill="#111">USBD_DescriptorsTypeDef fs_desc</text>
+<text x="1340" y="1583" font-size="10" fill="#b91c1c" font-style="italic">ext: STM32CubeF4</text>
+<rect x="1330" y="1727" width="330" height="127" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.4"/>
+<text x="1340" y="1746" font-size="13" font-weight="bold" fill="#111">usbd_conf</text>
+<text x="1340" y="1761" font-size="10" fill="#555" font-style="italic">&lt;&lt;module&gt;&gt; HAL-Glue</text>
+<text x="1340" y="1776" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Src/usbd_conf.c</text>
+<text x="1340" y="1791" font-size="10.5" fill="#777" font-style="italic">../BITMAP/Inc/usbd_conf.h</text>
+<text x="1340" y="1808" font-size="10.5" fill="#111">+USBD_static_malloc(size)</text>
+<text x="1340" y="1823" font-size="10.5" fill="#111">+USBD_static_free(p)</text>
+<text x="1340" y="1840" font-size="10" fill="#b91c1c" font-style="italic">ext: STM32CubeF4</text>
+<text x="130" y="1746" font-size="11" font-weight="bold" fill="#444">Externe Pakete (Legende der ext:-Verweise):</text>
+<text x="130" y="1764" font-size="10.5" fill="#b91c1c" font-style="italic">ITS_BRD_LIB</text><text x="280" y="1839" font-size="10.5" fill="#555">lcd.h, timer.h, delay.h, init.h, error.h</text>
+<text x="130" y="1782" font-size="10.5" fill="#b91c1c" font-style="italic">DisplayWaveshare</text><text x="280" y="1857" font-size="10.5" fill="#555">LCD_GUI.h, LCD_Touch.h, LCD_general.h, fontsFLASH.h</text>
+<text x="130" y="1800" font-size="10.5" fill="#b91c1c" font-style="italic">STM32CubeF4</text><text x="280" y="1875" font-size="10.5" fill="#555">stm32f4xx_hal*/ll_*, usbd_core/cdc/def/ctlreq, core_cm4.h</text>
+<text x="130" y="1818" font-size="10.5" fill="#b91c1c" font-style="italic">CMSIS/libc</text><text x="280" y="1893" font-size="10.5" fill="#555">stdint.h, stdbool.h, stdio.h, stdlib.h</text>
+</svg>
+
