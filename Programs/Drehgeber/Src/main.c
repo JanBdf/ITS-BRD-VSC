@@ -14,10 +14,8 @@
 #include "general.h"
 #include "gpio.h"
 #include "init.h"
-#include "lcd.h"
 #include "phase.h"
 #include "timer.h"
-#include <stdint.h>
 #include <stm32f429xx.h>
 void init_all(struct Phaset current) {
    initTimer();
@@ -31,7 +29,6 @@ void init_all(struct Phaset current) {
 }
 
 int main(void) {
-   bool catched = 0;
    initITSboard(); // Initialisierung des ITS Boards
 
    GUI_init(DEFAULT_BRIGHTNESS); // Initialisierung des LCD Boards mit Touch
@@ -39,17 +36,11 @@ int main(void) {
 
    print_init();
    init_all(poll_phase());
-   uint32_t cycle = 0;
    while (1) {
-      uint32_t t0 = DWT -> CYCCNT;
       set_led(0, 1);
       struct Phaset current = poll_phase();
       if (read_button(SE)) {
          init_all(current);
-         if(catched){
-                     lcdGotoXY(5, 5);
-            lcdPrintInt(cycle);
-         }
       }
       run_state(current);
 
@@ -70,8 +61,6 @@ int main(void) {
          // setcounter binary(get_counter())
          set_counter(get_counter());
          set_led(0, 0);
-         cycle = DWT -> CYCCNT - t0;
-         catched = 1;
       } else {
          set_led(D21, true);
       }
@@ -83,3 +72,12 @@ int main(void) {
 // Zeitmessungen 549/s / 360
 // OSZ: unsere print_c = 0,59ms
 // superloop max = 0,6ms
+
+
+//TESTFÄLLE 
+//negativ positiv wert
+//ganz großer ganz niedriger wert
+//große geschwindigkeit
+//sehr kleine geschwindigkeit -> nachkommastellen
+//überspringen von state -> error
+//
