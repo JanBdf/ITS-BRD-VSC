@@ -4,9 +4,9 @@
  * @brief phases module
  * @version 0.1
  * @date 2026-11-04
- * 
+ *
  * @copyright Copyright (c) 2026
- * 
+ *
  */
 #include "phase.h"
 #include "general.h"
@@ -33,7 +33,7 @@ static void state_backward(void);
 static void state_error(void);
 
 static const state_functions STATES_ARR[4][4] = {
-    {NULL, b, f, e}, //a
+    {NULL, b, f, e}, // a
     {f, NULL, e, b}, // d
     {b, e, NULL, f}, // b
     {e, f, b, NULL}, // c
@@ -46,7 +46,7 @@ static const state_functions STATES_ARR[4][4] = {
 
 struct Phaset poll_phase(void) {
    struct Phaset cphase;
-   cphase.phase = (read_pin(SY) << 1) | read_pin(SX);
+   cphase.phase = (((uint8_t) read_pin(SY)) << 1U) | ((uint8_t) read_pin(SX));
    cphase.timestamp = getTimeStamp();
 
    return cphase;
@@ -80,7 +80,7 @@ uint32_t get_last_timestamp(void) { return last_phase.timestamp; }
 void phase_init(struct Phaset init) {
    last_phase = init;
    counter = 0;
-   error =  false;
+   error = false;
    direction = UNKNOWN;
 }
 

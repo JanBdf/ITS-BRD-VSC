@@ -1,7 +1,7 @@
 /**
  * @file calc.c
  * @author Lasse Boll
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2026-11-04
  *
@@ -20,11 +20,13 @@ struct Snapshot {
 };
 static struct Snapshot old;
 #define TICKS_PER_MS 90000
-#define REFRESHRATE (300*TICKS_PER_MS)
-#define DELAY (3000*TICKS_PER_MS)
+#define REFRESHRATE (300 * TICKS_PER_MS)
+#define DELAY (3000 * TICKS_PER_MS)
 #define DEGRE_STEP 0.3
+#define MS_PER_SEC 1000.0
 
-bool calc_update(uint32_t current, double *angle, double *angle_speed) {//NOLINT
+bool calc_update(uint32_t current, double *angle, //NOLINT
+                 double *angle_speed) {
    // 300ms fenster
    if (current - last_refresh < REFRESHRATE) {
       return false;
@@ -43,10 +45,10 @@ bool calc_update(uint32_t current, double *angle, double *angle_speed) {//NOLINT
 
    if (difference) {
       uint32_t ticks = counter_ts - old.timestamp;
-      double sec = ticks / (TICKS_PER_MS * 1000.0);
+      double sec = ticks / (TICKS_PER_MS * MS_PER_SEC);
       *angle_speed = (new_counter - old.counter) * DEGRE_STEP / sec;
-   }else{
-    *angle_speed = 0.0;
+   } else {
+      *angle_speed = 0.0;
    }
 
    old.timestamp = counter_ts;
@@ -57,7 +59,7 @@ bool calc_update(uint32_t current, double *angle, double *angle_speed) {//NOLINT
    return true;
 }
 
-void calc_init(uint32_t current){
-    old.timestamp = current;
-    last_refresh = current;
+void calc_init(uint32_t current) {
+   old.timestamp = current;
+   last_refresh = current;
 }

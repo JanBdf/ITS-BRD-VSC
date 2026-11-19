@@ -1,12 +1,12 @@
 /**
  * @file gpio.c
  * @author Lasse Boll
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2026-11-04
- * 
+ *
  * @copyright Copyright (c) 2026
- * 
+ *
  */
 #include "gpio.h"
 #include "general.h"
@@ -22,11 +22,11 @@
 static char buf[ROWS][VALUE_WIDTH + 1];
 static uint8_t buf_pos = ROWS * VALUE_WIDTH;
 
-bool read_pin(int index) { return (GPIOF->IDR >> index) & 1U; }
+bool read_pin(uint8_t index) { return (GPIOF->IDR >> index) & 1U; }
 
-bool read_button(int index) { return !read_pin(index); }
+bool read_button(uint8_t index) { return !read_pin(index); }
 
-int set_led(int index, bool onn) {
+int set_led(uint8_t index, bool onn) {
    GPIOE->BSRR = 0x01U << (index + (!onn * BSRR_RESET_OFFSET));
 
    return 0;
