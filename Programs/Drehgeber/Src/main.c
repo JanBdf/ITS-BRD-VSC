@@ -38,6 +38,7 @@ int main(void) {
    init_all(poll_phase());
 
    while (1) {
+      set_led(0, 1);
       struct Phaset current = poll_phase();
       if (read_button(SE)) {
          init_all(current);
@@ -59,6 +60,7 @@ int main(void) {
          set_led(D22, direction == BACKWARD);
          // setcounter binary(get_counter())
          set_counter(get_counter());
+         set_led(0, 0);
       } else {
          set_led(D21, true);
       }
