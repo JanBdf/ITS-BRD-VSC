@@ -14,9 +14,11 @@
 #include "general.h"
 #include "gpio.h"
 #include "init.h"
+#include "lcd.h"
 #include "phase.h"
 #include "timer.h"
-
+#include <stdint.h>
+#include <stm32f429xx.h>
 void init_all(struct Phaset current) {
    initTimer();
    phase_init(current);
@@ -36,8 +38,9 @@ int main(void) {
 
    print_init();
    init_all(poll_phase());
-
+   uint32_t cycle = 0;
    while (1) {
+      uint32_t t0 = DWT -> CYCCNT;
       set_led(0, 1);
       struct Phaset current = poll_phase();
       if (read_button(SE)) {
@@ -52,6 +55,8 @@ int main(void) {
          if (calcup) {
             // update print buffer(angle,speed);
             update_buffer(angle, angle_speed);
+            lcdGotoXY(5, 5);
+            lcdPrintInt(cycle);
          }
          print_c();
          // setleds d22-23(get_direction)
@@ -61,6 +66,7 @@ int main(void) {
          // setcounter binary(get_counter())
          set_counter(get_counter());
          set_led(0, 0);
+         cycle = DWT -> CYCCNT - t0;
       } else {
          set_led(D21, true);
       }
@@ -69,5 +75,6 @@ int main(void) {
 
 // EOF
 
-// TESTZEITEN: mit drawrectangle maximum bei 360 sind 252/sec und ohne bei 360
-// sind 502/sec with release 549/sec auf 360
+// Zeitmessungen 549/s / 360
+// OSZ: unsere print_c = 0,59ms
+// superloop max = 0,6ms
