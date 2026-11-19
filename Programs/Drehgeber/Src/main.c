@@ -53,7 +53,9 @@ int main(void) {
             // update print buffer(angle,speed);
             update_buffer(angle, angle_speed);
          }
+         set_led(1, 1);
          print_c();
+         set_led(1, 0);
          // setleds d22-23(get_direction)
          int direction = get_direction();
          set_led(D23, direction == FORWARD);
