@@ -54,10 +54,12 @@ void print_c(void) {
    if (buf_pos >= ROWS * VALUE_WIDTH) {
       return;
    }
+   set_led(1, 1);
    uint8_t field = buf_pos / VALUE_WIDTH;
    uint8_t column = buf_pos % VALUE_WIDTH;
 
    lcdGotoXY(COL_VALUE + column, field);
    lcdPrintC(buf[field][column]);
    buf_pos++;
+   set_led(1, 0);
 }
