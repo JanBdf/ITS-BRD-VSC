@@ -1,6 +1,6 @@
 /**
  * @file phase.c
- * @author Lasse Boll
+ * @author Lasse Boll & Jan Bittendorf
  * @brief phases module
  * @version 0.1
  * @date 2026-11-04
@@ -64,13 +64,12 @@ static void state_backward(void) {
 
 static void state_error(void) { error = true; }
 
-int run_state(struct Phaset current) {
+void run_state(struct Phaset current) {
    state_functions sfs = STATES_ARR[last_phase.phase][current.phase];
    if (sfs) {
       sfs();
       last_phase = current;
    }
-   return 0;
 }
 
 int get_counter(void) { return counter; }

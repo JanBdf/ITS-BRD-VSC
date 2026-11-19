@@ -1,6 +1,6 @@
 /**
  * @file general.h
- * @author Lasse
+ * @author Lasse Boll & Jan Bittendorf
  * @brief
  * @version 0.1
  * @date 2026-11-04

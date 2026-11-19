@@ -1,6 +1,6 @@
 /**
  * @file calc.c
- * @author Lasse Boll
+ * @author Lasse Boll & Jan Bittendorf
  * @brief
  * @version 0.1
  * @date 2026-11-04

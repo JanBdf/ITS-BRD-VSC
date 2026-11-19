@@ -1,6 +1,6 @@
 /**
  * @file main.c
- * @author Lasse Boll
+ * @author Lasse Boll & Jan Bittendorf
  * @brief
  * @version 0.1
  * @date 2026-11-04
@@ -25,7 +25,7 @@ void init_all(struct Phaset current) {
    set_led(D22, false);
    set_led(D23, false);
    set_counter(0);
-   print_all(0.0, 0.0);
+   update_buffer(0.0, 0.0);
 }
 
 int main(void) {
@@ -49,8 +49,8 @@ int main(void) {
       if (!has_error()) {
          bool calcup = calc_update(current.timestamp, &angle, &angle_speed);
          if (calcup) {
-            // print(angle,speed);
-            print_all(angle, angle_speed);
+            // update print buffer(angle,speed);
+            update_buffer(angle, angle_speed);
          }
          print_c();
          // setleds d22-23(get_direction)

@@ -1,6 +1,6 @@
 /**
  * @file gpio.h
- * @author Lasse Boll
+ * @author Lasse Boll & Jan Bittendorf
  * @brief
  * @version 0.1
  * @date 2026-11-04
@@ -34,7 +34,7 @@ bool read_button(uint8_t index);
  * @param index
  * @return int
  */
-int set_led(uint8_t index, bool onn);
+void set_led(uint8_t index, bool onn);
 /**
  * @brief Set the int counter in binary to the GPIOD
  *
@@ -52,7 +52,7 @@ void print_init(void);
  * @param angle
  * @param angle_speed
  */
-void print_all(double angle, double angle_speed);
+void update_buffer(double angle, double angle_speed);
 /**
  * @brief prints one char at the time from the string buffer set in print_all
  *

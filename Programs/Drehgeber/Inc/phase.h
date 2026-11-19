@@ -1,6 +1,6 @@
 /**
  * @file phase.h
- * @author Lasse Boll
+ * @author Lasse Boll & Jan Bittendorf
  * @brief fsm for phases, and getter
  * @version 0.1
  * @date 2026-11-04
@@ -44,7 +44,7 @@ struct Phaset poll_phase(void);
  * @param current
  * @return int
  */
-extern int run_state(struct Phaset current);
+void run_state(struct Phaset current);
 /**
  * @brief Get the counter object
  *

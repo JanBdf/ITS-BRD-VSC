@@ -1,6 +1,6 @@
 /**
  * @file gpio.c
- * @author Lasse Boll
+ * @author Lasse Boll & Bittendorf
  * @brief
  * @version 0.1
  * @date 2026-11-04
@@ -27,10 +27,8 @@ bool read_pin(uint8_t index) { return (GPIOF->IDR >> index) & 1U; }
 
 bool read_button(uint8_t index) { return !read_pin(index); }
 
-int set_led(uint8_t index, bool onn) {
+void set_led(uint8_t index, bool onn) {
    GPIOE->BSRR = 0x01U << (index + (!onn * BSRR_RESET_OFFSET));
-
-   return 0;
 }
 
 void set_counter(int count) {
@@ -46,7 +44,7 @@ void print_init(void) {
    lcdPrintlnS("Winkelgeschwindigkeit:");
 }
 
-void print_all(double angle, double angle_speed) { // NOLINT
+void update_buffer(double angle, double angle_speed) { // NOLINT
    snprintf(buf[0], sizeof buf[0], "%*.1f", VALUE_WIDTH, angle);
    snprintf(buf[1], sizeof buf[1], "%*.1f", VALUE_WIDTH, angle_speed);
    buf_pos = 0;
