@@ -45,6 +45,8 @@ int main(void) {
       struct Phaset current = poll_phase();
       if (read_button(SE)) {
          init_all(current);
+                     lcdGotoXY(5, 5);
+            lcdPrintInt(cycle);
       }
       run_state(current);
 
@@ -55,8 +57,7 @@ int main(void) {
          if (calcup) {
             // update print buffer(angle,speed);
             update_buffer(angle, angle_speed);
-            lcdGotoXY(5, 5);
-            lcdPrintInt(cycle);
+
          }
          print_c();
          // setleds d22-23(get_direction)
