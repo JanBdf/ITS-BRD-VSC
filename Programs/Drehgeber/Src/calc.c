@@ -1,7 +1,19 @@
+/**
+ * @file calc.c
+ * @author Lasse Boll
+ * @brief 
+ * @version 0.1
+ * @date 2026-11-04
+ *
+ * @copyright Copyright (c) 2026
+ *
+ */
 #include "calc.h"
 #include "phase.h"
 #include <stdint.h>
+
 static uint32_t last_refresh;
+
 struct Snapshot {
    int counter;
    uint32_t timestamp;
@@ -31,7 +43,7 @@ bool calc_update(uint32_t current, double *angle, double *angle_speed) {//NOLINT
 
    if (difference) {
       uint32_t ticks = counter_ts - old.timestamp;
-      double sec = ticks / (TICKS_PER_MS * 1000.0);//NOLINT
+      double sec = ticks / (TICKS_PER_MS * 1000.0);
       *angle_speed = (new_counter - old.counter) * DEGRE_STEP / sec;
    }else{
     *angle_speed = 0.0;

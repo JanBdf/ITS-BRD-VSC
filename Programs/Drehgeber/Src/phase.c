@@ -1,3 +1,13 @@
+/**
+ * @file phase.c
+ * @author Lasse Boll
+ * @brief phases module
+ * @version 0.1
+ * @date 2026-11-04
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
 #include "phase.h"
 #include "general.h"
 #include "gpio.h"
@@ -23,7 +33,7 @@ static void state_backward(void);
 static void state_error(void);
 
 static const state_functions STATES_ARR[4][4] = {
-    {NULL, b, f, e}, // a
+    {NULL, b, f, e}, //a
     {f, NULL, e, b}, // d
     {b, e, NULL, f}, // b
     {e, f, b, NULL}, // c

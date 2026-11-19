@@ -1,3 +1,13 @@
+/**
+ * @file general.h
+ * @author Lasse
+ * @brief 
+ * @version 0.1
+ * @date 2026-11-04
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
 #ifndef general_h
 #define general_h
 #define SX 0
