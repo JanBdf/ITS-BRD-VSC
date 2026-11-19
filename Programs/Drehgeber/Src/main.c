@@ -31,6 +31,7 @@ void init_all(struct Phaset current) {
 }
 
 int main(void) {
+   bool catched = 0;
    initITSboard(); // Initialisierung des ITS Boards
 
    GUI_init(DEFAULT_BRIGHTNESS); // Initialisierung des LCD Boards mit Touch
@@ -45,8 +46,10 @@ int main(void) {
       struct Phaset current = poll_phase();
       if (read_button(SE)) {
          init_all(current);
+         if(catched){
                      lcdGotoXY(5, 5);
             lcdPrintInt(cycle);
+         }
       }
       run_state(current);
 
@@ -68,6 +71,7 @@ int main(void) {
          set_counter(get_counter());
          set_led(0, 0);
          cycle = DWT -> CYCCNT - t0;
+         catched = 1;
       } else {
          set_led(D21, true);
       }
