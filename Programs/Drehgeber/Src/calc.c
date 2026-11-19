@@ -25,7 +25,7 @@ static struct Snapshot old;
 #define DEGRE_STEP 0.3
 #define MS_PER_SEC 1000.0
 
-bool calc_update(uint32_t current, double *angle, //NOLINT
+bool calc_update(uint32_t current, double *angle, // NOLINT
                  double *angle_speed) {
    // 300ms fenster
    if (current - last_refresh < REFRESHRATE) {

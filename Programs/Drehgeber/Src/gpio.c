@@ -18,6 +18,7 @@
 #define COL_VALUE 25
 #define VALUE_WIDTH 10
 #define ROWS 2
+#define MASK8UMAX 0xFFU
 
 static char buf[ROWS][VALUE_WIDTH + 1];
 static uint8_t buf_pos = ROWS * VALUE_WIDTH;
@@ -34,7 +35,7 @@ int set_led(uint8_t index, bool onn) {
 
 void set_counter(int count) {
    uint32_t val = (uint8_t)count;
-   GPIOD->BSRR = val | ((~val & 0xFFU) << BSRR_RESET_OFFSET);
+   GPIOD->BSRR = val | ((~val & MASK8UMAX) << BSRR_RESET_OFFSET);
 }
 
 void print_init(void) {

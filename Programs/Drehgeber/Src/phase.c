@@ -46,7 +46,7 @@ static const state_functions STATES_ARR[4][4] = {
 
 struct Phaset poll_phase(void) {
    struct Phaset cphase;
-   cphase.phase = (((uint8_t) read_pin(SY)) << 1U) | ((uint8_t) read_pin(SX));
+   cphase.phase = (((uint32_t)read_pin(SY)) << 1U) | ((uint32_t)read_pin(SX));
    cphase.timestamp = getTimeStamp();
 
    return cphase;
